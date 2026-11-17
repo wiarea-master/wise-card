@@ -1,0 +1,311 @@
+{
+  "taptapPackage": {
+    "coffeeMode": "coffee_10_30",
+    "shopping7Target": "openmarket"
+  },
+  "cards": [
+    {
+      "id": "card_shinhan_love",
+      "name": "신한카드 Love",
+      "theme": "rose",
+      "targetSpend": 300000,
+      "currentSpend": 180000,
+      "baseRate": 0.5,
+      "baseBenefitText": "일반 가맹점 기본 최대 0.5% 포인트 적립",
+      "cautionNote": "전월 실적 30만 원 이상 시 주유·마트·백화점·외식 통합 할인한도 제공"
+    },
+    {
+      "id": "card_samsung_taptap_o",
+      "name": "삼성카드 taptap O",
+      "theme": "emerald",
+      "targetSpend": 300000,
+      "currentSpend": 120000,
+      "baseRate": 0,
+      "baseBenefitText": "패키지 외 일반 매장 기본 할인 없음 (선택 패키지 집중 카드)",
+      "cautionNote": "⚠️ 주의: 할인이 적용된 결제 금액 전체는 전월 실적(30만 원) 산정에서 제외됩니다."
+    },
+    {
+      "id": "card_hyundai_mm",
+      "name": "현대카드 MM",
+      "theme": "slate",
+      "targetSpend": 1000000,
+      "currentSpend": 650000,
+      "baseRate": 1.5,
+      "baseBenefitText": "국내외 전 가맹점 기본 1.5% M포인트 무제한 적립",
+      "cautionNote": "💡 월 최소 사용 금액(100만 원)이 높고 기본 적립률이 1.5%로 높아서, 다른 카드가 1% 적립이거나 무할인인 곳에서는 이 카드가 1순위입니다!"
+    }
+  ],
+  "benefits": [
+    {
+      "id": "ben_taptap_coffee",
+      "cardId": "card_samsung_taptap_o",
+      "placeName": "10대 커피전문점 (스타벅스·투썸·이디야·폴바셋·메가·컴포즈 등)",
+      "keywords": [
+        "스타벅스",
+        "스벅",
+        "투썸플레이스",
+        "투썸",
+        "이디야",
+        "메가커피",
+        "컴포즈",
+        "카페베네",
+        "탐앤탐스",
+        "커피빈",
+        "엔제리너스",
+        "할리스",
+        "파스쿠찌",
+        "아티제",
+        "폴바셋",
+        "커피",
+        "카페"
+      ],
+      "rate": 30,
+      "benefitDetail": "30% 결제일 할인 (월 1만원 한도, ※할인건 전월실적 제외)",
+      "active": true,
+      "isPackageManaged": true
+    },
+    {
+      "id": "ben_taptap_openmarket",
+      "cardId": "card_samsung_taptap_o",
+      "placeName": "오픈마켓 (G마켓·옥션·11번가)",
+      "keywords": [
+        "G마켓",
+        "지마켓",
+        "옥션",
+        "11번가",
+        "오픈마켓"
+      ],
+      "rate": 7,
+      "benefitDetail": "[패키지 7% 선택] 7% 결제일 할인 (월 5,000원 한도, ※할인건 전월실적 제외)",
+      "active": true,
+      "isPackageManaged": true
+    },
+    {
+      "id": "ben_taptap_social",
+      "cardId": "card_samsung_taptap_o",
+      "placeName": "소셜커머스 (쿠팡·티몬·위메프)",
+      "keywords": [
+        "쿠팡",
+        "티몬",
+        "위메프",
+        "소셜커머스"
+      ],
+      "rate": 1,
+      "benefitDetail": "[패키지 자동적용] 1% 빅포인트 적립 (한도 제한 없음 · 할인 대신 1% 적립)",
+      "active": true,
+      "isPackageManaged": true
+    },
+    {
+      "id": "ben_taptap_trendy",
+      "cardId": "card_samsung_taptap_o",
+      "placeName": "트렌드샵 (올리브영·편의점·자라·유니클로·H&M)",
+      "keywords": [
+        "올리브영",
+        "편의점",
+        "CU",
+        "GS25",
+        "세븐일레븐",
+        "이마트24",
+        "자라",
+        "유니클로",
+        "H&M",
+        "트렌드샵",
+        "트렌디샵",
+        "다이소"
+      ],
+      "rate": 1,
+      "benefitDetail": "[패키지 자동적용] 1% 빅포인트 적립 (한도 제한 없음 · 할인 대신 1% 적립)",
+      "active": true,
+      "isPackageManaged": true
+    },
+    {
+      "id": "ben_taptap_transit",
+      "cardId": "card_samsung_taptap_o",
+      "placeName": "대중교통(버스·지하철) / 택시 / 이동통신요금",
+      "keywords": [
+        "대중교통",
+        "버스",
+        "지하철",
+        "택시",
+        "카카오택시",
+        "통신비",
+        "휴대폰요금",
+        "SKT",
+        "KT",
+        "LGU+"
+      ],
+      "rate": 10,
+      "benefitDetail": "10% 결제일 할인 (각 월 5,000원 한도, ※할인건 전월실적 제외)",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_taptap_movie",
+      "cardId": "card_samsung_taptap_o",
+      "placeName": "CGV / 롯데시네마 영화관",
+      "keywords": [
+        "CGV",
+        "롯데시네마",
+        "영화",
+        "영화관"
+      ],
+      "rate": 25,
+      "benefitDetail": "10,000원 이상 결제 시 5,000원 할인 (월 2회)",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_love_gscaltex",
+      "cardId": "card_shinhan_love",
+      "placeName": "GS칼텍스 주유소",
+      "keywords": [
+        "GS칼텍스",
+        "칼텍스",
+        "주유",
+        "GS",
+        "주유소",
+        "기름",
+        "휘발유",
+        "경유",
+        "기름값"
+      ],
+      "rate": 4.5,
+      "benefitDetail": "1리터당 60원 할인 (LPG 30원 할인, 일 2회·1회 10만원 한도)",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_love_mart",
+      "cardId": "card_shinhan_love",
+      "placeName": "3대 대형마트 (이마트·롯데마트·홈플러스)",
+      "keywords": [
+        "이마트",
+        "롯데마트",
+        "홈플러스",
+        "대형마트",
+        "마트",
+        "트레이더스",
+        "장보기"
+      ],
+      "rate": 5,
+      "benefitDetail": "5% 결제일 할인 (건당 3만~10만원 결제 시)",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_love_dept",
+      "cardId": "card_shinhan_love",
+      "placeName": "4대 백화점 (신세계·롯데·현대·갤러리아)",
+      "keywords": [
+        "백화점",
+        "신세계백화점",
+        "롯데백화점",
+        "현대백화점",
+        "갤러리아",
+        "신세계",
+        "롯데"
+      ],
+      "rate": 5,
+      "benefitDetail": "5% 결제일 할인 (통합 할인한도 내)",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_love_outback",
+      "cardId": "card_shinhan_love",
+      "placeName": "아웃백 / 빕스(VIPS) / 불고기브라더스",
+      "keywords": [
+        "아웃백",
+        "빕스",
+        "VIPS",
+        "패밀리레스토랑",
+        "불고기브라더스",
+        "스테이크"
+      ],
+      "rate": 20,
+      "benefitDetail": "20% 결제일 할인",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_love_cgv",
+      "cardId": "card_shinhan_love",
+      "placeName": "CGV 영화",
+      "keywords": [
+        "CGV",
+        "영화",
+        "영화관",
+        "맥스무비"
+      ],
+      "rate": 35,
+      "benefitDetail": "최대 7,000원 영화 티켓 할인",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_love_starbucks",
+      "cardId": "card_shinhan_love",
+      "placeName": "스타벅스",
+      "keywords": [
+        "스타벅스",
+        "스벅"
+      ],
+      "rate": 20,
+      "benefitDetail": "20% 결제일 할인 (탭탭O 30% 한도 소진 시 2순위 대안)",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_mm_dining",
+      "cardId": "card_hyundai_mm",
+      "placeName": "일반음식점 / 동네식당 / 외식 / 배달앱",
+      "keywords": [
+        "동네식당",
+        "일반음식점",
+        "음식점",
+        "식당",
+        "밥집",
+        "한식",
+        "중식",
+        "일식",
+        "고기집",
+        "삼겹살",
+        "회식",
+        "배달",
+        "배달의민족",
+        "쿠팡이츠"
+      ],
+      "rate": 5,
+      "benefitDetail": "특별 최대 5% M포인트 적립 (기본 1.5%) + 월 100만 원 실적 달성 1순위",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_mm_general_all",
+      "cardId": "card_hyundai_mm",
+      "placeName": "전 가맹점 기본 적립 (올리브영·쿠팡·병원·약국·일반매장 포함)",
+      "keywords": [
+        "올리브영",
+        "쿠팡",
+        "티몬",
+        "위메프",
+        "편의점",
+        "CU",
+        "GS25",
+        "세븐일레븐",
+        "병원",
+        "약국",
+        "치과",
+        "한의원",
+        "학원",
+        "미용실",
+        "다이소"
+      ],
+      "rate": 1.5,
+      "benefitDetail": "1.5% M포인트 기본 적립 (한도 무제한) + 월 100만 원 필수 실적 채우기",
+      "active": true,
+      "isPackageManaged": false
+    }
+  ],
+  "updatedAt": "2026-11-17T06:28:41.961Z"
+}
