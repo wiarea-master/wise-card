@@ -90,40 +90,39 @@
 
   <!-- 상단 고정 헤더 (부부 GitHub 실시간 동기화 상태 및 원터치 동기화 버튼) -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
-    <div class="max-w-xl mx-auto px-3.5 py-2.5 flex items-center justify-between gap-2">
+    <div class="max-w-xl mx-auto px-3 py-2 flex items-center justify-between gap-1.5">
       <div class="flex items-center gap-2 min-w-0">
-        <div class="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shrink-0">
-          <i class="fa-solid fa-credit-card text-xs"></i>
+        <div class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-xs shrink-0">
+          <i class="fa-solid fa-credit-card text-[11px]"></i>
         </div>
         <div class="min-w-0">
-          <div class="flex items-center gap-1.5">
-            <h1 class="font-extrabold text-sm sm:text-base text-slate-900 tracking-tight truncate">슬기롭게 카드생활</h1>
-            <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">v5.0</span>
+          <div class="flex items-center gap-1">
+            <h1 class="font-extrabold text-[15px] sm:text-base text-slate-900 tracking-tight whitespace-nowrap">슬기롭게 카드생활</h1>
           </div>
           <!-- 실시간 GitHub 동기화 상태 배지 -->
-          <div id="github-sync-status-badge" class="text-[11px] font-semibold text-slate-500 flex items-center gap-1 truncate mt-0.5">
-            <span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span>
-            <span>⚪ 기기 저장 모드</span>
+          <div id="github-sync-status-badge" class="text-[10px] font-semibold text-slate-500 flex items-center gap-1 whitespace-nowrap mt-0.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block"></span>
+            <span>기기 저장 모드</span>
           </div>
         </div>
       </div>
 
-      <div class="flex items-center gap-1.5 shrink-0">
+      <div class="flex items-center gap-1 shrink-0">
         <button
           onclick="pullFromGitHub(true)"
           id="header-sync-pull-btn"
           title="GitHub에서 최신 데이터 불러오기"
-          class="text-xs font-bold px-2.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 active:scale-95 transition flex items-center gap-1 cursor-pointer"
+          class="text-[11px] font-bold px-2 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 active:scale-95 transition flex items-center gap-1 whitespace-nowrap cursor-pointer"
         >
-          <i id="sync-spin-icon" class="fa-solid fa-rotate text-indigo-600"></i>
+          <i id="sync-spin-icon" class="fa-solid fa-rotate text-indigo-600 text-[11px]"></i>
           <span>동기화</span>
         </button>
         <button
           onclick="openGitHubModal()"
-          class="text-xs font-extrabold px-2.5 py-1.5 rounded-xl bg-slate-900 text-white hover:bg-slate-800 active:scale-95 transition flex items-center gap-1 shadow-xs cursor-pointer"
+          class="text-[11px] font-extrabold px-2.5 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800 active:scale-95 transition flex items-center gap-1 shadow-xs whitespace-nowrap cursor-pointer"
         >
-          <i class="fa-solid fa-gear text-[11px]"></i>
-          <span>부부 공유 설정</span>
+          <i class="fa-solid fa-gear text-[10px]"></i>
+          <span>공유설정</span>
         </button>
       </div>
     </div>
@@ -200,26 +199,26 @@
     <!-- =====================================================================
          [메인 섹션 3] 📊 이번 달 카드별 최소 사용금액 현황 (미달 / 완료 원터치 스위치)
          ===================================================================== -->
-    <section id="section-spend-status" class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3.5">
+    <section id="section-spend-status" class="bg-white rounded-2xl p-3.5 sm:p-5 shadow-sm border border-slate-200 space-y-2.5">
       <div class="flex items-center justify-between gap-2">
-        <div>
-          <h2 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-1.5">
+        <div class="min-w-0">
+          <h2 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-1.5 whitespace-nowrap">
             <i class="fa-solid fa-circle-check text-indigo-600"></i>
             <span>이번 달 카드별 최소 사용금액 현황</span>
           </h2>
-          <p class="text-[11px] text-slate-500 mt-0.5">
-            <strong class="text-slate-700">[완료]</strong>를 선택한 카드는 이번 달 실적을 다 채운 것으로 보고 <strong>카드 추천에서 자동 제외</strong>됩니다.
+          <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+            <strong class="text-slate-700">[완료]</strong> 선택 시 해당 카드는 추천에서 자동 제외됩니다.
           </p>
         </div>
         <button
           onclick="resetAllCardsToUnmet()"
-          class="text-[11px] font-bold px-2.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition shrink-0 cursor-pointer"
+          class="text-[11px] font-bold px-2 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition shrink-0 whitespace-nowrap cursor-pointer"
         >
-          전체 '미달'로 초기화
+          전체 미달로
         </button>
       </div>
 
-      <div id="spend-status-list" class="space-y-2.5"></div>
+      <div id="spend-status-list" class="space-y-2"></div>
     </section>
 
 
@@ -1185,20 +1184,20 @@
       }
 
       if (!isGitHubConfigured()) {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span><span>⚪ 기기 저장 모드</span>`;
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block"></span><span>기기 저장 모드</span>`;
         return;
       }
 
       const timeStr = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
 
       if (state === 'syncing') {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping inline-block"></span><span class="text-amber-700 font-bold">${detailText || '동기화 중...'}</span>`;
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping inline-block"></span><span class="text-amber-700 font-bold">${detailText || '동기화 중...'}</span>`;
       } else if (state === 'success') {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span class="text-emerald-700 font-bold">🟢 GitHub ${detailText || '동기화 완료'} (${timeStr})</span>`;
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span><span class="text-emerald-700 font-bold">GitHub ${detailText || '완료'} (${timeStr})</span>`;
       } else if (state === 'error') {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="text-rose-600 font-bold">🔴 GitHub 오류 (${detailText || '설정 확인'})</span>`;
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block"></span><span class="text-rose-600 font-bold">GitHub 오류 (${detailText || '확인'})</span>`;
       } else {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span class="text-emerald-700 font-bold">🟢 GitHub 연동 중</span>`;
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span><span class="text-emerald-700 font-bold">GitHub 연동 중</span>`;
       }
     }
 
@@ -1895,38 +1894,38 @@
       listEl.innerHTML = appData.cards.map(card => {
         const theme = CARD_THEMES[card.theme] || CARD_THEMES.slate;
         const isDone = Boolean(card.isCompleted);
+        const shortCriteria = (card.minSpendLabel || '').replace(' 원', '');
 
         return `
-          <div class="p-3.5 rounded-xl border transition flex items-center justify-between gap-3 ${
-            isDone ? 'bg-slate-100/80 border-slate-200' : 'bg-white border-slate-200 shadow-2xs'
+          <div class="px-3 py-2.5 rounded-xl border transition flex items-center justify-between gap-2.5 ${
+            isDone ? 'bg-slate-100/80 border-slate-200 opacity-75' : 'bg-white border-slate-200 shadow-2xs'
           }">
-            <div class="flex items-center gap-3 min-w-0">
-              ${renderRealCardPlateGraphic(card.id, 'mini')}
-              <div class="min-w-0">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="text-xs font-extrabold px-2 py-0.5 rounded-md ${theme.solidBadge}">
-                    ${card.name}
-                  </span>
-                  <span class="text-xs font-bold text-slate-500">
-                    최소 기준: ${card.minSpendLabel}
-                  </span>
-                </div>
-                <div class="text-[11px] font-bold mt-1 ${isDone ? 'text-slate-500' : 'text-indigo-700'}">
-                  ${isDone
-                    ? '✅ 이번 달 사용 완료 (카드 추천에서 제외됨)'
-                    : '🔥 현재 실적 미달 (카드 추천 활성 상태)'}
-                </div>
+            <!-- 좌측: 실물 미니 카드 플레이트 (48x32 고정) -->
+            ${renderRealCardPlateGraphic(card.id, 'mini')}
+
+            <!-- 중앙: 줄바꿈 없는 2줄 초슬림 요약 -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1.5 whitespace-nowrap overflow-hidden">
+                <span class="text-[13px] sm:text-sm font-extrabold ${isDone ? 'text-slate-500 line-through' : 'text-slate-900'} truncate">
+                  ${card.name}
+                </span>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded border ${theme.badge} shrink-0">
+                  ${shortCriteria}
+                </span>
+              </div>
+              <div class="text-[11px] font-bold mt-0.5 whitespace-nowrap truncate ${isDone ? 'text-slate-500' : 'text-indigo-600'}">
+                ${isDone ? '✅ 실적 완료 · 추천 제외' : '🔥 실적 미달 · 추천 활성'}
               </div>
             </div>
 
-            <!-- 직관적인 [미달 / 완료] 2버튼 스위치 -->
-            <div class="inline-flex rounded-xl p-1 bg-slate-200/80 shrink-0">
+            <!-- 우측: 컴팩트 [미달 | 완료] 스위치 -->
+            <div class="inline-flex rounded-lg p-0.5 bg-slate-200/80 shrink-0 whitespace-nowrap">
               <button
                 type="button"
                 onclick="setCardCompletedStatus('${card.id}', false)"
-                class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+                class="px-2.5 py-1 rounded-md text-xs font-extrabold transition cursor-pointer ${
                   !isDone
-                    ? 'bg-indigo-600 text-white shadow-xs'
+                    ? 'bg-indigo-600 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }"
               >
@@ -1935,9 +1934,9 @@
               <button
                 type="button"
                 onclick="setCardCompletedStatus('${card.id}', true)"
-                class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+                class="px-2.5 py-1 rounded-md text-xs font-extrabold transition cursor-pointer ${
                   isDone
-                    ? 'bg-slate-800 text-white shadow-xs'
+                    ? 'bg-slate-800 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }"
               >
