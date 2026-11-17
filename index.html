@@ -48,11 +48,11 @@
     }
   </style>
 </head>
-<body class="min-h-screen pb-16">
+<body class="min-h-screen pb-14">
 
-  <!-- 상단 고정 헤더 (부부 GitHub 실시간 동기화 상태 및 원터치 동기화 버튼 포함) -->
+  <!-- 상단 고정 헤더 (부부 GitHub 실시간 동기화 상태 및 원터치 동기화 버튼) -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
-    <div class="max-w-2xl mx-auto px-3.5 py-2.5 flex items-center justify-between gap-2">
+    <div class="max-w-xl mx-auto px-3.5 py-2.5 flex items-center justify-between gap-2">
       <div class="flex items-center gap-2 min-w-0">
         <div class="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shrink-0">
           <i class="fa-solid fa-credit-card text-xs"></i>
@@ -60,12 +60,12 @@
         <div class="min-w-0">
           <div class="flex items-center gap-1.5">
             <h1 class="font-extrabold text-sm sm:text-base text-slate-900 tracking-tight truncate">슬기롭게 카드생활</h1>
-            <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">v3.0</span>
+            <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">v4.0</span>
           </div>
           <!-- 실시간 GitHub 동기화 상태 배지 -->
           <div id="github-sync-status-badge" class="text-[11px] font-semibold text-slate-500 flex items-center gap-1 truncate mt-0.5">
             <span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span>
-            <span>기기 내부 저장 모드 (GitHub 미연동)</span>
+            <span>⚪ 기기 저장 모드</span>
           </div>
         </div>
       </div>
@@ -78,37 +78,37 @@
           class="text-xs font-bold px-2.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 active:scale-95 transition flex items-center gap-1 cursor-pointer"
         >
           <i id="sync-spin-icon" class="fa-solid fa-rotate text-indigo-600"></i>
-          <span class="hidden sm:inline">동기화</span>
+          <span>동기화</span>
         </button>
         <button
           onclick="openGitHubModal()"
-          class="text-xs font-extrabold px-2.5 py-1.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 active:scale-95 transition flex items-center gap-1 shadow-xs cursor-pointer"
+          class="text-xs font-extrabold px-2.5 py-1.5 rounded-xl bg-slate-900 text-white hover:bg-slate-800 active:scale-95 transition flex items-center gap-1 shadow-xs cursor-pointer"
         >
-          <i class="fa-brands fa-github"></i>
+          <i class="fa-solid fa-gear text-[11px]"></i>
           <span>부부 공유 설정</span>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-2xl mx-auto px-3.5 pt-3.5 space-y-5">
+  <main class="max-w-xl mx-auto px-3.5 pt-3.5 space-y-4">
 
     <!-- =====================================================================
-         [1순위 최상단 메뉴] 사용처 : [ 입력창 ] [ 카드 추천 ] + 바로 아래 즉시 결과 노출!
+         [메인 섹션 1 & 2] 사용처 검색 + 추천 카드 즉시 노출 + 내 카드 3종 비교
          ===================================================================== -->
-    <section id="section-top-recommend" class="bg-white rounded-2xl p-3.5 sm:p-5 shadow-md border-2 border-indigo-600/80 space-y-3">
-      <div class="flex items-center justify-between flex-wrap gap-1">
+    <section id="section-top-recommend" class="bg-white rounded-2xl p-4 sm:p-5 shadow-md border-2 border-indigo-600/80 space-y-3.5">
+      <div class="flex items-center justify-between gap-2">
         <div class="flex items-center gap-1.5">
           <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white text-[11px] font-extrabold">결제 전 1초 검색</span>
           <h2 class="font-extrabold text-slate-900 text-sm sm:text-base">어디서 카드를 사용하시나요?</h2>
         </div>
-        <a href="#section-taptap-package" class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 hover:bg-emerald-100">
-          탭탭O: 10대커피 30% + 오픈마켓 7% 적용중 <i class="fa-solid fa-chevron-down text-[9px]"></i>
-        </a>
+        <span id="active-cards-count-badge" class="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200">
+          추천 대상: 3장
+        </span>
       </div>
 
-      <!-- 직관적인 사용처 입력 바 (모바일에서 한 눈에 들어오도록 컴팩트 배치) -->
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-slate-50 p-2 sm:p-2.5 rounded-2xl border border-slate-200">
+      <!-- 직관적인 사용처 입력 바 -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-slate-50 p-2 rounded-2xl border border-slate-200">
         <div class="flex items-center gap-2 flex-1 bg-white px-3 py-2.5 rounded-xl border-2 border-slate-200 focus-within:border-indigo-600 transition">
           <label for="usage-place-input" class="font-extrabold text-slate-800 text-sm sm:text-base whitespace-nowrap shrink-0">
             사용처 :
@@ -117,7 +117,7 @@
             type="search"
             enterkeyhint="search"
             id="usage-place-input"
-            placeholder="예: 칼텍스, 올리브영, 투썸, G마켓"
+            placeholder="업체명 입력 (예: 칼텍스, 올리브영, 스타벅스)"
             onkeydown="if(event.key === 'Enter') { event.preventDefault(); runCardRecommendation(true); }"
             class="w-full text-sm sm:text-base font-extrabold text-slate-900 placeholder-slate-400 focus:outline-none bg-transparent"
           />
@@ -141,46 +141,152 @@
         </button>
       </div>
 
-      <!-- ★ 핵심 변경: 추천 결과 보드(#recommendationResult)를 검색바 바로 밑에 최우선 배치! ★ -->
-      <div id="recommendationResult" class="scroll-mt-16 pt-1"></div>
-
-      <!-- 자주 쓰는 사용처 원터치 테스트 버튼 (결과 보드 아래로 이동하여 모바일 첫 화면 가림 방지) -->
-      <div class="pt-2 border-t border-slate-100 space-y-1.5">
-        <div class="text-[11px] font-bold text-slate-500 flex items-center justify-between">
-          <span><i class="fa-solid fa-bolt text-amber-500 mr-1"></i>자주 찾는 사용처 터치 즉시 추천:</span>
-          <span class="text-[10px] text-slate-400">터치 시 위로 자동 스크롤됩니다</span>
-        </div>
-        <div class="flex flex-wrap gap-1.5">
-          <button onclick="quickSearchPlace('칼텍스')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100 transition cursor-pointer">⛽ 주유/칼텍스 (러브 60원)</button>
-          <button onclick="quickSearchPlace('올리브영')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 transition cursor-pointer">💄 올리브영 (현대MM 1.5%)</button>
-          <button onclick="quickSearchPlace('쿠팡')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 transition cursor-pointer">📦 쿠팡 (현대MM 1.5%)</button>
-          <button onclick="quickSearchPlace('G마켓')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer">🛍️ G마켓/11번가 (탭탭O 7%)</button>
-          <button onclick="quickSearchPlace('투썸플레이스')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer">☕ 투썸/10대커피 (탭탭O 30%)</button>
-          <button onclick="quickSearchPlace('스타벅스')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer">☕ 스타벅스 (탭탭O 30%)</button>
-          <button onclick="quickSearchPlace('이마트')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100 transition cursor-pointer">🛒 이마트 (러브 5%)</button>
-          <button onclick="quickSearchPlace('동네식당')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 transition cursor-pointer">🍚 일반음식점 (현대MM)</button>
-        </div>
+      <!-- 자주 쓰는 사용처 빠른 터치 칩 -->
+      <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
+        <span class="text-[11px] font-bold text-slate-400 mr-0.5">빠른 선택:</span>
+        <button onclick="quickSearchPlace('스타벅스')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#스타벅스</button>
+        <button onclick="quickSearchPlace('GS칼텍스')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#GS칼텍스</button>
+        <button onclick="quickSearchPlace('올리브영')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#올리브영</button>
+        <button onclick="quickSearchPlace('쿠팡')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#쿠팡</button>
+        <button onclick="quickSearchPlace('G마켓')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#G마켓</button>
+        <button onclick="quickSearchPlace('이마트')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#이마트</button>
+        <button onclick="quickSearchPlace('아웃백')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#아웃백</button>
+        <button onclick="quickSearchPlace('동네식당')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer">#동네식당</button>
       </div>
+
+      <!-- 추천 결과 및 'OO' 이용 시 내 카드 3종 비교 (결제금액 합산 계산기 제거됨) -->
+      <div id="recommendationResult" class="scroll-mt-16 pt-1"></div>
     </section>
 
 
     <!-- =====================================================================
-         [2순위 메뉴] 🎛️ 삼성카드 taptap O 라이프스타일 패키지 설정기
+         [메인 섹션 3] 📊 이번 달 카드별 최소 사용금액 현황 (미달 / 완료 원터치 스위치)
          ===================================================================== -->
-    <section id="section-taptap-package" class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-emerald-200 space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+    <section id="section-spend-status" class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3.5">
+      <div class="flex items-center justify-between gap-2">
         <div>
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-[11px] font-extrabold">패키지 맞춤 설정</span>
-            <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">삼성카드 taptap O 내 맘대로 라이프스타일 패키지</h2>
-          </div>
-          <p class="text-xs text-slate-500 mt-1">
-            선택하신 <strong>(혜택1) 10대 커피 30% 할인 + (혜택2) 오픈마켓 7% 할인</strong> 기준이 적용되어, 선택하지 않은 <strong>소셜커머스(쿠팡 등)와 트렌드샵(올리브영·편의점 등)은 자동으로 1% 적립</strong>으로 계산됩니다.
+          <h2 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-indigo-600"></i>
+            <span>이번 달 카드별 최소 사용금액 현황</span>
+          </h2>
+          <p class="text-[11px] text-slate-500 mt-0.5">
+            <strong class="text-slate-700">[완료]</strong>를 선택한 카드는 이번 달 실적을 다 채운 것으로 보고 <strong>카드 추천에서 자동 제외</strong>됩니다.
           </p>
         </div>
+        <button
+          onclick="resetAllCardsToUnmet()"
+          class="text-[11px] font-bold px-2.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition shrink-0 cursor-pointer"
+        >
+          전체 '미달'로 초기화
+        </button>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div id="spend-status-list" class="space-y-2.5"></div>
+    </section>
+
+
+    <!-- =====================================================================
+         [메인 섹션 4] 🛠️ 깔끔한 설정 메뉴 버튼 3개 (클릭 시 전용 모달 진입)
+         ===================================================================== -->
+    <section class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-2.5">
+      <div class="flex items-center justify-between pb-1">
+        <h2 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-1.5">
+          <i class="fa-solid fa-sliders text-indigo-600"></i>
+          <span>카드 혜택 및 패키지 맞춤 관리</span>
+        </h2>
+        <button
+          onclick="confirmRestoreInitialData()"
+          class="text-[11px] font-bold text-slate-400 hover:text-slate-600 underline cursor-pointer"
+        >
+          초기 데이터 복원
+        </button>
+      </div>
+
+      <!-- 버튼 1: 삼성카드 <패키지 맞춤 설정> -->
+      <button
+        type="button"
+        onclick="openTaptapModal()"
+        class="w-full text-left p-3.5 rounded-xl bg-emerald-50/70 hover:bg-emerald-100/80 border border-emerald-200 transition flex items-center justify-between gap-3 group cursor-pointer"
+      >
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+            <i class="fa-solid fa-box-open text-sm"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="font-extrabold text-slate-900 text-sm">삼성카드 &lt;패키지 맞춤 설정&gt;</div>
+            <div id="btn-summary-taptap" class="text-xs text-emerald-800 font-semibold truncate mt-0.5">
+              현재: (혜택1) 10대 커피 30% + (혜택2) 오픈마켓 7%
+            </div>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right text-emerald-600 group-hover:translate-x-0.5 transition shrink-0"></i>
+      </button>
+
+      <!-- 버튼 2: 내 카드 혜택 <직접 추가 / 수정> -->
+      <button
+        type="button"
+        onclick="openBenefitFormModal()"
+        class="w-full text-left p-3.5 rounded-xl bg-indigo-50/70 hover:bg-indigo-100/80 border border-indigo-200 transition flex items-center justify-between gap-3 group cursor-pointer"
+      >
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+            <i class="fa-solid fa-plus text-sm"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="font-extrabold text-slate-900 text-sm">내 카드 혜택 &lt;직접 추가 / 수정&gt;</div>
+            <div class="text-xs text-indigo-800 font-semibold truncate mt-0.5">
+              빠진 가맹점이나 할인 혜택을 내 카드에 직접 적어 넣기
+            </div>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right text-indigo-600 group-hover:translate-x-0.5 transition shrink-0"></i>
+      </button>
+
+      <!-- 버튼 3: <등록된 카드별 혜택 목록 On/Off> -->
+      <button
+        type="button"
+        onclick="openBenefitListModal()"
+        class="w-full text-left p-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition flex items-center justify-between gap-3 group cursor-pointer"
+      >
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center shrink-0 shadow-xs">
+            <i class="fa-solid fa-toggle-on text-sm"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="font-extrabold text-slate-900 text-sm">&lt;등록된 카드별 혜택 목록 On/Off&gt;</div>
+            <div id="btn-summary-benefit-count" class="text-xs text-slate-600 font-semibold truncate mt-0.5">
+              등록된 혜택을 스위치로 켜고 끄거나 수정·삭제하기
+            </div>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right text-slate-500 group-hover:translate-x-0.5 transition shrink-0"></i>
+      </button>
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================================
+       [전용 모달 1] 📦 삼성카드 taptap O <패키지 맞춤 설정> 창
+       ===================================================================== -->
+  <div id="taptap-package-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3.5 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-4 animate-fade-in my-6">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center">
+            <i class="fa-solid fa-box-open text-sm"></i>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-base">삼성카드 taptap O 패키지 맞춤 설정</h3>
+            <p class="text-[11px] text-slate-500">선택하지 않은 쇼핑 업종 2개는 자동으로 1% 적립으로 계산됩니다</p>
+          </div>
+        </div>
+        <button onclick="closeTaptapModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3.5">
         <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
           <div class="text-xs font-extrabold text-slate-800 flex items-center gap-1.5">
             <i class="fa-solid fa-mug-hot text-emerald-600"></i>
@@ -196,47 +302,46 @@
           </div>
           <div id="taptap-shopping-options" class="space-y-1.5"></div>
         </div>
+
+        <div id="taptap-current-summary" class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950 leading-relaxed"></div>
       </div>
 
-      <div id="taptap-current-summary" class="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200 text-xs text-emerald-950 leading-relaxed"></div>
-    </section>
+      <div class="pt-1">
+        <button
+          onclick="closeTaptapModal()"
+          class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm cursor-pointer"
+        >
+          설정 완료 및 닫기
+        </button>
+      </div>
+    </div>
+  </div>
 
 
-    <!-- =====================================================================
-         [3순위 메뉴] ✍️ 빠진 혜택 직접 적어 넣기 & 할인율(%) 수정 / 활성화(ON/OFF)
-         ===================================================================== -->
-    <section id="section-benefit-manager" class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200 space-y-5">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white text-[11px] font-extrabold">직접 추가·수정 (부부 자동공유)</span>
-            <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">내 카드 빠진 혜택 직접 추가 & 수치 수정</h2>
+  <!-- =====================================================================
+       [전용 모달 2] ➕ 내 카드 혜택 <직접 추가 / 수정> 창
+       ===================================================================== -->
+  <div id="benefit-form-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3.5 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-4 animate-fade-in my-6">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center">
+            <i class="fa-solid fa-pen-to-square text-sm"></i>
           </div>
-          <p class="text-xs text-slate-500 mt-1">
-            여기서 혜택을 추가하거나 수정·ON/OFF 하면 <strong>GitHub에 즉시 자동 저장</strong>되어 부인의 스마트폰에도 똑같이 반영됩니다.
-          </p>
+          <div>
+            <h3 id="benefit-form-title" class="font-extrabold text-slate-900 text-base">내 카드 혜택 직접 추가</h3>
+            <p class="text-[11px] text-slate-500">저장 즉시 내 폰과 부부 GitHub에 자동 반영됩니다</p>
+          </div>
         </div>
+        <button onclick="closeBenefitFormModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
 
-      <!-- 혜택 입력 / 수정 폼 -->
-      <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3.5">
-        <div class="flex items-center justify-between">
-          <h3 id="benefit-form-title" class="font-extrabold text-slate-800 text-sm flex items-center gap-1.5">
-            <i class="fa-solid fa-pen-to-square text-indigo-600"></i>
-            <span>새로운 카드 혜택 직접 적어 넣기</span>
-          </h3>
-          <button
-            id="cancel-edit-benefit-btn"
-            onclick="resetBenefitForm()"
-            class="hidden text-xs font-bold text-rose-600 hover:underline cursor-pointer"
-          >
-            수정 취소 (새로 입력)
-          </button>
-        </div>
+      <input type="hidden" id="form-editing-benefit-id" value="" />
 
-        <input type="hidden" id="form-editing-benefit-id" value="" />
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">1. 카드 선택</label>
             <select
@@ -246,119 +351,121 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">2. 대표 사용처 이름</label>
-            <input
-              type="text"
-              id="form-place-name"
-              placeholder="예: GS칼텍스 주유소, 코스트코"
-              class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-600"
-            />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">3. 체감 할인/적립률 숫자(%)</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1">2. 체감 할인/적립 점수(%)</label>
             <input
               type="number"
               id="form-benefit-rate"
               step="0.5"
-              placeholder="예: 7, 30, 1, 1.5"
+              placeholder="예: 5, 7, 30, 1.5"
               value="5"
               class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-extrabold text-indigo-700 focus:outline-none focus:border-indigo-600"
             />
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">
-              4. 검색 키워드 <span class="font-normal text-slate-500">(쉼표로 구분 · 하나만 검색해도 매칭)</span>
-            </label>
-            <input
-              type="text"
-              id="form-keywords"
-              placeholder="예: 주유, 칼텍스, GS, 주유소"
-              class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-600"
-            />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">5. 구체적인 혜택 설명</label>
-            <input
-              type="text"
-              id="form-benefit-detail"
-              placeholder="예: 1리터당 60원 할인 / 7% 결제일 할인"
-              class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-600"
-            />
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
-          <p class="text-[11px] text-slate-500">
-            💡 저장 즉시 내 폰과 GitHub 클라우드에 동시 반영됩니다.
-          </p>
-          <button
-            onclick="saveCustomBenefit()"
-            id="save-benefit-btn"
-            class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-sm transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
-          >
-            <i class="fa-solid fa-check"></i>
-            <span>혜택 저장 및 즉시 활성화</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- 카드별 혜택 목록 & ON/OFF 스위치 -->
-      <div class="space-y-3">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <h3 class="font-extrabold text-slate-800 text-sm flex items-center gap-1.5">
-            <i class="fa-solid fa-list-check text-indigo-600"></i>
-            <span>등록된 카드별 혜택 목록 (스위치로 ON/OFF · 수정 가능)</span>
-          </h3>
-          <div id="benefit-filter-tabs" class="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl"></div>
-        </div>
-
-        <div id="benefit-list-container" class="space-y-2.5"></div>
-      </div>
-    </section>
-
-
-    <!-- =====================================================================
-         [4순위 메뉴] 📊 이번 달 카드별 최소 사용 금액(실적) 현황
-         ===================================================================== -->
-    <section id="section-spend-status" class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded-md bg-slate-800 text-white text-[11px] font-extrabold">실적 체크</span>
-            <h2 class="font-extrabold text-slate-900 text-base sm:text-lg">이번 달 카드별 최소 사용 금액(실적) 현황</h2>
-          </div>
-          <p class="text-xs text-slate-500 mt-1">
-            특별 할인이 없거나 1% 적립만 되는 곳에서는 <strong>1.5% 기본 적립 + 월 100만 원 실적 달성</strong>이 필요한 현대카드 MM을 우선 추천합니다.
-          </p>
+          <label class="block text-xs font-bold text-slate-700 mb-1">3. 대표 사용처 이름</label>
+          <input
+            type="text"
+            id="form-place-name"
+            placeholder="예: GS칼텍스 주유소, 코스트코"
+            class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-600"
+          />
         </div>
-        <div class="flex items-center gap-1.5">
-          <button
-            onclick="confirmResetAllSpend()"
-            class="text-xs font-bold px-3 py-1.5 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 transition cursor-pointer"
-          >
-            <i class="fa-solid fa-rotate-left mr-1"></i> 매월 1일 실적 0원 초기화
-          </button>
-          <button
-            onclick="confirmRestoreInitialData()"
-            class="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-300 transition cursor-pointer"
-          >
-            초기값 복원
-          </button>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">
+            4. 검색 키워드 <span class="font-normal text-slate-500">(쉼표로 구분 · 하나만 검색해도 매칭)</span>
+          </label>
+          <input
+            type="text"
+            id="form-keywords"
+            placeholder="예: 주유, 칼텍스, GS, 주유소"
+            class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-600"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">5. 구체적인 혜택 설명</label>
+          <input
+            type="text"
+            id="form-benefit-detail"
+            placeholder="예: 1리터당 60원 할인 / 7% 결제일 할인"
+            class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-600"
+          />
         </div>
       </div>
 
-      <div id="spend-status-list" class="space-y-3"></div>
-    </section>
+      <div class="flex gap-2 pt-2">
+        <button
+          type="button"
+          onclick="closeBenefitFormModal()"
+          class="flex-1 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm cursor-pointer"
+        >
+          취소
+        </button>
+        <button
+          type="button"
+          onclick="saveCustomBenefit()"
+          id="save-benefit-btn"
+          class="flex-2 py-2.5 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+        >
+          <i class="fa-solid fa-check"></i>
+          <span>혜택 저장 및 활성화</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
-  </main>
 
   <!-- =====================================================================
-       ☁️ 부부 스마트폰 GitHub 실시간 동기화 설정 모달 (5초 연동코드 복사/붙여넣기 포함)
+       [전용 모달 3] 📋 <등록된 카드별 혜택 목록 On/Off> 창
+       ===================================================================== -->
+  <div id="benefit-list-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3.5 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-4 sm:p-5 shadow-2xl space-y-3.5 animate-fade-in my-6 max-h-[88vh] flex flex-col">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3 shrink-0">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-slate-800 text-white flex items-center justify-center">
+            <i class="fa-solid fa-list-check text-sm"></i>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-base">등록된 카드별 혜택 목록 On/Off</h3>
+            <p class="text-[11px] text-slate-500">스위치로 혜택을 켜거나 끄고, [수정] 버튼으로 내용을 고칠 수 있습니다</p>
+          </div>
+        </div>
+        <button onclick="closeBenefitListModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- 카드별 필터 탭 + 새 혜택 추가 바로가기 -->
+      <div class="flex flex-wrap items-center justify-between gap-2 shrink-0">
+        <div id="benefit-filter-tabs" class="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl"></div>
+        <button
+          onclick="closeBenefitListModal(); openBenefitFormModal();"
+          class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 cursor-pointer flex items-center gap-1"
+        >
+          <i class="fa-solid fa-plus"></i> 새 혜택 추가
+        </button>
+      </div>
+
+      <!-- 스크롤 가능한 혜택 리스트 영역 -->
+      <div id="benefit-list-container" class="space-y-2.5 overflow-y-auto pr-1 flex-1"></div>
+
+      <div class="pt-2 border-t border-slate-100 shrink-0">
+        <button
+          onclick="closeBenefitListModal()"
+          class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-sm cursor-pointer"
+        >
+          닫기
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================================
+       [전용 모달 4] ☁️ 부부 스마트폰 GitHub 실시간 동기화 설정 모달
        ===================================================================== -->
   <div id="github-sync-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3.5 overflow-y-auto">
     <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-4 animate-fade-in my-6">
@@ -452,10 +559,6 @@
             />
           </div>
         </div>
-
-        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
-          💡 독서 앱에서 사용하셨던 GitHub 토큰(<strong>repo</strong> 또는 <strong>Contents Read/Write</strong> 권한)을 그대로 사용하실 수 있습니다. 저장 시 저장소 안에 <code>card-data.json</code> 파일이 자동 생성됩니다.
-        </div>
       </div>
 
       <!-- 동작 버튼 모음 -->
@@ -495,38 +598,6 @@
     </div>
   </div>
 
-  <!-- 사용 금액 수정 모달 -->
-  <div id="spend-edit-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-xl space-y-4 animate-fade-in">
-      <div class="flex items-center justify-between">
-        <h3 id="spend-modal-title" class="font-extrabold text-slate-900 text-base">카드 실적 금액 수정</h3>
-        <button onclick="closeSpendModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="space-y-3">
-        <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">이번 달 현재 사용 금액 (원)</label>
-          <input type="number" id="spend-modal-current" step="10000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base font-extrabold text-slate-900" />
-          <div class="flex flex-wrap gap-1.5 mt-2">
-            <button onclick="addSpendInput(10000)" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700">+1만</button>
-            <button onclick="addSpendInput(50000)" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700">+5만</button>
-            <button onclick="addSpendInput(100000)" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700">+10만</button>
-            <button onclick="addSpendInput(-10000)" class="px-2 py-1 rounded bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700">-1만</button>
-            <button onclick="document.getElementById('spend-modal-current').value = 0" class="px-2 py-1 rounded bg-slate-100 text-xs font-bold text-slate-500">0원</button>
-          </div>
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">한 달 최소 목표 사용 금액 (원)</label>
-          <input type="number" id="spend-modal-target" step="50000" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold text-slate-700" />
-        </div>
-      </div>
-      <div class="flex gap-2 pt-2">
-        <button onclick="closeSpendModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">취소</button>
-        <button onclick="saveSpendModal()" class="flex-1 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold">저장하기</button>
-      </div>
-    </div>
-  </div>
 
   <!-- 커스텀 확인 모달 -->
   <div id="custom-confirm-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
@@ -537,8 +608,8 @@
       <h3 id="confirm-title" class="font-extrabold text-slate-900 text-base">확인</h3>
       <p id="confirm-msg" class="text-xs text-slate-600 leading-relaxed"></p>
       <div class="flex gap-2">
-        <button onclick="closeConfirmModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">취소</button>
-        <button id="confirm-ok-btn" class="flex-1 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold">확인</button>
+        <button onclick="closeConfirmModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold cursor-pointer">취소</button>
+        <button id="confirm-ok-btn" class="flex-1 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold cursor-pointer">확인</button>
       </div>
     </div>
   </div>
@@ -547,34 +618,32 @@
   <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center gap-2 w-full max-w-sm px-4"></div>
 
   <script>
-    // v3 스토리지 키 & 부부 GitHub 동기화 설정 스토리지 키
-    const STORAGE_KEY_V3 = 'wise_card_life_v3_package_data';
+    // v4 스토리지 키 (기존 v3 데이터가 있으면 자동 마이그레이션)
+    const STORAGE_KEY_V4 = 'wise_card_life_v4_minimal_data';
+    const STORAGE_KEY_V3_LEGACY = 'wise_card_life_v3_package_data';
     const GH_CONFIG_KEY = 'wise_card_life_v3_github_config';
 
     const CARD_THEMES = {
       rose: {
         gradient: 'bg-gradient-to-br from-rose-600 via-red-600 to-pink-800',
         badge: 'bg-rose-100 text-rose-800 border-rose-200',
-        solidBadge: 'bg-rose-600 text-white',
-        bar: 'bg-rose-600'
+        solidBadge: 'bg-rose-600 text-white'
       },
       emerald: {
         gradient: 'bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-800',
         badge: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-        solidBadge: 'bg-emerald-600 text-white',
-        bar: 'bg-emerald-600'
+        solidBadge: 'bg-emerald-600 text-white'
       },
       slate: {
         gradient: 'bg-gradient-to-br from-slate-800 via-slate-900 to-indigo-950',
         badge: 'bg-slate-200 text-slate-800 border-slate-300',
-        solidBadge: 'bg-slate-800 text-white',
-        bar: 'bg-slate-800'
+        solidBadge: 'bg-slate-800 text-white'
       }
     };
 
     const EXCLUDED_SPEND_KEYWORDS = ['세금', '국세', '지방세', '공과금', '아파트관리비', '관리비', '상품권', '기프트카드', '등록금', '4대보험', '전기요금', '도시가스', '수도요금'];
 
-    // 초기 기본 데이터 생성 함수 (삼성 탭탭O: 10대 커피 30% + 오픈마켓 7% -> 쿠팡/올리브영 1% 자동 적용)
+    // 초기 기본 데이터 (각 카드별 isCompleted: false [미달] 기본값)
     function getInitialAppData() {
       return {
         updatedAt: new Date().toISOString(),
@@ -584,34 +653,37 @@
         },
         cards: [
           {
-            id: 'card_shinhan_love',
-            name: '신한카드 Love',
-            theme: 'rose',
-            targetSpend: 300000,
-            currentSpend: 180000,
-            baseRate: 0.5,
-            baseBenefitText: '일반 가맹점 기본 최대 0.5% 포인트 적립',
-            cautionNote: '전월 실적 30만 원 이상 시 주유·마트·백화점·외식 통합 할인한도 제공 (30만:1만 / 50만:1.5만 / 100만:3만원)'
+            id: 'card_hyundai_mm',
+            name: '현대카드 MM',
+            theme: 'slate',
+            minSpendLabel: '월 100만 원',
+            targetSpend: 1000000,
+            isCompleted: false, // false = 미달(추천 활성), true = 완료(추천 제외)
+            baseRate: 1.5,
+            baseBenefitText: '국내외 전 가맹점 기본 1.5% M포인트 무제한 적립',
+            cautionNote: '💡 월 최소 사용 기준(100만 원)이 가장 높고 기본 적립률도 1.5%로 높아서 일반 가맹점 1순위 카드입니다.'
           },
           {
             id: 'card_samsung_taptap_o',
             name: '삼성카드 taptap O',
             theme: 'emerald',
+            minSpendLabel: '월 30만 원',
             targetSpend: 300000,
-            currentSpend: 120000,
+            isCompleted: false,
             baseRate: 0.0,
-            baseBenefitText: '패키지 외 일반 매장 기본 할인 없음 (선택 패키지 집중 카드)',
+            baseBenefitText: '패키지 외 일반 매장 기본 할인 없음',
             cautionNote: '⚠️ 주의: 할인이 적용된 결제 금액 전체는 전월 실적(30만 원) 산정에서 제외됩니다.'
           },
           {
-            id: 'card_hyundai_mm',
-            name: '현대카드 MM',
-            theme: 'slate',
-            targetSpend: 1000000,
-            currentSpend: 650000,
-            baseRate: 1.5,
-            baseBenefitText: '국내외 전 가맹점 기본 1.5% M포인트 무제한 적립',
-            cautionNote: '💡 월 최소 사용 금액(100만 원)이 높고 기본 적립률이 1.5%로 높아서, 다른 카드가 1% 적립이거나 무할인인 곳에서는 이 카드가 1순위입니다!'
+            id: 'card_shinhan_love',
+            name: '신한카드 Love',
+            theme: 'rose',
+            minSpendLabel: '월 30만 원',
+            targetSpend: 300000,
+            isCompleted: false,
+            baseRate: 0.5,
+            baseBenefitText: '일반 가맹점 기본 최대 0.5% 포인트 적립',
+            cautionNote: '전월 30만 원 이상 시 주유·마트·백화점·외식 통합 할인한도 제공'
           }
         ],
         benefits: [
@@ -744,7 +816,7 @@
             placeName: '스타벅스',
             keywords: ['스타벅스', '스벅'],
             rate: 20,
-            benefitDetail: '20% 결제일 할인 (탭탭O 30% 한도 소진 시 2순위 대안)',
+            benefitDetail: '20% 결제일 할인',
             active: true,
             isPackageManaged: false
           },
@@ -777,22 +849,15 @@
     let appData = { updatedAt: '', taptapPackage: {}, cards: [], benefits: [] };
     let ghConfig = { owner: 'wiarea-master', repo: 'wise-card', path: 'card-data.json', token: '' };
     let currentFilterCardId = 'ALL';
-    let currentSearchQuery = '칼텍스';
-    let editingSpendCardId = null;
+    let currentSearchQuery = 'GS칼텍스';
     let confirmActionCallback = null;
     let isSyncingGitHub = false;
 
-    function formatKRW(amount) {
-      return Number(amount || 0).toLocaleString('ko-KR') + '원';
-    }
-
-    // UTF-8 안전한 Base64 인코딩 / 디코딩 (한국어 깨짐 완벽 방지)
+    // UTF-8 Base64 변환
     function utf8ToBase64(str) {
       const bytes = new TextEncoder().encode(str);
       let binary = '';
-      for (let i = 0; i < bytes.length; i++) {
-        binary += String.fromCharCode(bytes[i]);
-      }
+      for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
       return btoa(binary);
     }
 
@@ -800,18 +865,13 @@
       const cleanBase64 = (base64 || '').replace(/\s/g, '');
       const binary = atob(cleanBase64);
       const bytes = new Uint8Array(binary.length);
-      for (let i = 0; i < binary.length; i++) {
-        bytes[i] = binary.charCodeAt(i);
-      }
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
       return new TextDecoder().decode(bytes);
     }
 
-    // 클립보드 복사 헬퍼 (iFrame 및 모바일 브라우저 호환)
     function copyTextToClipboard(text, successMsg) {
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => {
-          showToast(successMsg);
-        }).catch(() => fallbackCopyText(text, successMsg));
+        navigator.clipboard.writeText(text).then(() => showToast(successMsg)).catch(() => fallbackCopyText(text, successMsg));
       } else {
         fallbackCopyText(text, successMsg);
       }
@@ -829,9 +889,32 @@
         document.execCommand('copy');
         showToast(successMsg);
       } catch (e) {
-        showToast('복사에 실패했습니다. 직접 선택해 복사해 주세요.', 'warning');
+        showToast('복사에 실패했습니다.', 'warning');
       }
       document.body.removeChild(ta);
+    }
+
+    // 카드 데이터 정규화 (v3 데이터 호환 보장)
+    function normalizeLoadedData(parsed) {
+      if (!parsed || !Array.isArray(parsed.cards) || !Array.isArray(parsed.benefits)) return null;
+      if (!parsed.taptapPackage) {
+        parsed.taptapPackage = { coffeeMode: 'coffee_10_30', shopping7Target: 'openmarket' };
+      }
+      parsed.cards.forEach(c => {
+        if (typeof c.isCompleted !== 'boolean') {
+          c.isCompleted = false;
+        }
+        if (!c.minSpendLabel) {
+          c.minSpendLabel = c.id === 'card_hyundai_mm' ? '월 100만 원' : '월 30만 원';
+        }
+        if (!c.targetSpend) {
+          c.targetSpend = c.id === 'card_hyundai_mm' ? 1000000 : 300000;
+        }
+      });
+      // 카드 표시 순서: 현대카드 MM -> 삼성카드 taptap O -> 신한카드 Love
+      const orderMap = { card_hyundai_mm: 1, card_samsung_taptap_o: 2, card_shinhan_love: 3 };
+      parsed.cards.sort((a, b) => (orderMap[a.id] || 99) - (orderMap[b.id] || 99));
+      return parsed;
     }
 
     function loadData() {
@@ -853,14 +936,12 @@
       }
 
       try {
-        const raw = localStorage.getItem(STORAGE_KEY_V3);
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (parsed && Array.isArray(parsed.cards) && Array.isArray(parsed.benefits)) {
-            appData = parsed;
-            if (!appData.taptapPackage) {
-              appData.taptapPackage = { coffeeMode: 'coffee_10_30', shopping7Target: 'openmarket' };
-            }
+        const rawV4 = localStorage.getItem(STORAGE_KEY_V4) || localStorage.getItem(STORAGE_KEY_V3_LEGACY);
+        if (rawV4) {
+          const normalized = normalizeLoadedData(JSON.parse(rawV4));
+          if (normalized) {
+            appData = normalized;
+            saveData(false);
             return;
           }
         }
@@ -871,11 +952,11 @@
       saveData(false);
     }
 
-    // saveData(autoPushGitHub = true): 로컬 저장과 동시에 GitHub 자동 업로드
     function saveData(autoPushGitHub = true, reasonLabel = '데이터 변경') {
       try {
         appData.updatedAt = new Date().toISOString();
-        localStorage.setItem(STORAGE_KEY_V3, JSON.stringify(appData));
+        localStorage.setItem(STORAGE_KEY_V4, JSON.stringify(appData));
+        updateMenuButtonSummaries();
         if (autoPushGitHub && isGitHubConfigured()) {
           pushToGitHub(reasonLabel);
         }
@@ -884,8 +965,40 @@
       }
     }
 
+    // 메인 화면 하단 3개 메뉴 버튼의 요약 텍스트 업데이트
+    function updateMenuButtonSummaries() {
+      const pkg = appData.taptapPackage || { coffeeMode: 'coffee_10_30', shopping7Target: 'openmarket' };
+      const coffeeTxt = pkg.coffeeMode === 'coffee_10_30' ? '10대 커피 30%' : '스타벅스 50%';
+      const shopTxt = pkg.shopping7Target === 'openmarket'
+        ? '오픈마켓 7% (쿠팡·올리브영 1%)'
+        : pkg.shopping7Target === 'social'
+          ? '소셜커머스 7% (G마켓·올리브영 1%)'
+          : '트렌드샵 7% (G마켓·쿠팡 1%)';
+
+      const taptapSummaryEl = document.getElementById('btn-summary-taptap');
+      if (taptapSummaryEl) {
+        taptapSummaryEl.textContent = `현재: (혜택1) ${coffeeTxt} + (혜택2) ${shopTxt}`;
+      }
+
+      const activeBenCount = (appData.benefits || []).filter(b => b.active !== false).length;
+      const totalBenCount = (appData.benefits || []).length;
+      const benCountEl = document.getElementById('btn-summary-benefit-count');
+      if (benCountEl) {
+        benCountEl.textContent = `현재 총 ${totalBenCount}개 혜택 중 ${activeBenCount}개 활성화(ON) 상태`;
+      }
+
+      const unmetCount = (appData.cards || []).filter(c => !c.isCompleted).length;
+      const badgeEl = document.getElementById('active-cards-count-badge');
+      if (badgeEl) {
+        badgeEl.textContent = `추천 대상(미달): ${unmetCount}장`;
+        badgeEl.className = unmetCount > 0
+          ? 'text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200'
+          : 'text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-md border border-amber-300';
+      }
+    }
+
     // =====================================================================
-    // 부부 스마트폰 GitHub 실시간 자동 저장/불러오기 엔진 (REST API)
+    // 부부 스마트폰 GitHub 실시간 동기화 엔진
     // =====================================================================
     function isGitHubConfigured() {
       return Boolean(ghConfig.owner && ghConfig.repo && ghConfig.path && ghConfig.token);
@@ -902,20 +1015,20 @@
       }
 
       if (!isGitHubConfigured()) {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span><span>기기 내부 저장 모드 (부부 공유 미연동)</span>`;
+        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span><span>⚪ 기기 저장 모드</span>`;
         return;
       }
 
-      const timeStr = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const timeStr = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
 
       if (state === 'syncing') {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping inline-block"></span><span class="text-amber-700 font-bold">${detailText || 'GitHub 동기화 중...'}</span>`;
+        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping inline-block"></span><span class="text-amber-700 font-bold">${detailText || '동기화 중...'}</span>`;
       } else if (state === 'success') {
         badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span class="text-emerald-700 font-bold">🟢 GitHub ${detailText || '동기화 완료'} (${timeStr})</span>`;
       } else if (state === 'error') {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="text-rose-600 font-bold">🔴 GitHub 오류: ${detailText || '연결 확인 필요'}</span>`;
+        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="text-rose-600 font-bold">🔴 GitHub 오류 (${detailText || '설정 확인'})</span>`;
       } else {
-        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span class="text-emerald-700 font-bold">🟢 부부 GitHub 연동 중 (${ghConfig.owner}/${ghConfig.repo})</span>`;
+        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span class="text-emerald-700 font-bold">🟢 GitHub 연동 중</span>`;
       }
     }
 
@@ -931,7 +1044,7 @@
 
       if (isSyncingGitHub) return false;
       isSyncingGitHub = true;
-      updateSyncStatusBadge('syncing', '최신 카드 데이터 불러오는 중...');
+      updateSyncStatusBadge('syncing', '불러오는 중...');
 
       const apiUrl = `https://api.github.com/repos/${encodeURIComponent(ghConfig.owner)}/${encodeURIComponent(ghConfig.repo)}/contents/${ghConfig.path}?t=${Date.now()}`;
 
@@ -945,34 +1058,27 @@
         });
 
         if (res.status === 404) {
-          // 아직 저장소에 card-data.json 파일이 없는 경우 -> 현재 로컬 데이터를 최초 업로드!
           isSyncingGitHub = false;
           await pushToGitHub('최초 데이터 파일 생성');
           return true;
         }
 
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const fileJson = await res.json();
         if (fileJson && fileJson.content) {
           const decodedText = base64ToUtf8(fileJson.content);
-          const remoteData = JSON.parse(decodedText);
-          if (remoteData && Array.isArray(remoteData.cards) && Array.isArray(remoteData.benefits)) {
-            appData = remoteData;
-            if (!appData.taptapPackage) {
-              appData.taptapPackage = { coffeeMode: 'coffee_10_30', shopping7Target: 'openmarket' };
-            }
-            localStorage.setItem(STORAGE_KEY_V3, JSON.stringify(appData));
+          const normalized = normalizeLoadedData(JSON.parse(decodedText));
+          if (normalized) {
+            appData = normalized;
+            localStorage.setItem(STORAGE_KEY_V4, JSON.stringify(appData));
             renderTaptapPackageSection();
             renderBenefitManagerSection();
             renderSpendStatusSection();
+            updateMenuButtonSummaries();
             runCardRecommendation(false);
-            updateSyncStatusBadge('success', '최신 동기화 완료');
-            if (showToastMsg) {
-              showToast('☁️ GitHub에서 부부 공유 최신 카드 데이터를 불러왔습니다!');
-            }
+            updateSyncStatusBadge('success', '동기화 완료');
+            if (showToastMsg) showToast('☁️ GitHub에서 최신 카드 설정을 불러왔습니다!');
             isSyncingGitHub = false;
             return true;
           }
@@ -980,10 +1086,8 @@
         throw new Error('데이터 형식 오류');
       } catch (err) {
         console.error('GitHub Pull Error:', err);
-        updateSyncStatusBadge('error', '불러오기 실패 (설정 확인)');
-        if (showToastMsg) {
-          showToast('GitHub에서 데이터를 불러오지 못했습니다. 저장소 이름과 토큰을 확인해 주세요.', 'warning');
-        }
+        updateSyncStatusBadge('error', '불러오기 실패');
+        if (showToastMsg) showToast('GitHub 데이터를 불러오지 못했습니다. 설정을 확인해 주세요.', 'warning');
         isSyncingGitHub = false;
         return false;
       }
@@ -992,11 +1096,10 @@
     async function pushToGitHub(commitReason = '카드 데이터 업데이트') {
       if (!isGitHubConfigured()) return false;
 
-      updateSyncStatusBadge('syncing', 'GitHub에 자동 저장 중...');
+      updateSyncStatusBadge('syncing', '자동 저장 중...');
       const baseUrl = `https://api.github.com/repos/${encodeURIComponent(ghConfig.owner)}/${encodeURIComponent(ghConfig.repo)}/contents/${ghConfig.path}`;
 
       try {
-        // 1) 항상 최신 sha 값을 먼저 조회하여 남편/부인 폰 동시 수정 시 409 Conflict 방지
         let latestSha = null;
         const getRes = await fetch(`${baseUrl}?t=${Date.now()}`, {
           method: 'GET',
@@ -1011,7 +1114,6 @@
           latestSha = existingFile.sha || null;
         }
 
-        // 2) UTF-8 Base64 인코딩하여 PUT 업로드
         const jsonString = JSON.stringify(appData, null, 2);
         const encodedContent = utf8ToBase64(jsonString);
 
@@ -1019,9 +1121,7 @@
           message: `[슬기롭게 카드생활] ${commitReason} (${new Date().toLocaleString('ko-KR')})`,
           content: encodedContent
         };
-        if (latestSha) {
-          bodyPayload.sha = latestSha;
-        }
+        if (latestSha) bodyPayload.sha = latestSha;
 
         const putRes = await fetch(baseUrl, {
           method: 'PUT',
@@ -1033,21 +1133,17 @@
           body: JSON.stringify(bodyPayload)
         });
 
-        if (!putRes.ok) {
-          throw new Error(`HTTP ${putRes.status}`);
-        }
+        if (!putRes.ok) throw new Error(`HTTP ${putRes.status}`);
 
         updateSyncStatusBadge('success', '저장 완료');
         return true;
       } catch (err) {
         console.error('GitHub Push Error:', err);
-        updateSyncStatusBadge('error', '자동 저장 실패');
-        showToast('GitHub 자동 저장에 실패했습니다. [부부 공유 설정]을 확인해 주세요.', 'warning');
+        updateSyncStatusBadge('error', '저장 실패');
         return false;
       }
     }
 
-    // GitHub 설정 모달 열기 / 닫기 / 연동코드 복사·붙여넣기
     function openGitHubModal() {
       document.getElementById('gh-owner-input').value = ghConfig.owner || 'wiarea-master';
       document.getElementById('gh-repo-input').value = ghConfig.repo || 'wise-card';
@@ -1056,11 +1152,9 @@
       document.getElementById('gh-invite-code-input').value = '';
 
       const stateEl = document.getElementById('gh-modal-connection-state');
-      if (isGitHubConfigured()) {
-        stateEl.innerHTML = `<span class="text-emerald-600">● 현재 연결됨 (${ghConfig.owner}/${ghConfig.repo})</span>`;
-      } else {
-        stateEl.innerHTML = `<span class="text-slate-400">○ 아직 연결되지 않음</span>`;
-      }
+      stateEl.innerHTML = isGitHubConfigured()
+        ? `<span class="text-emerald-600">● 연결됨 (${ghConfig.owner}/${ghConfig.repo})</span>`
+        : `<span class="text-slate-400">○ 미연결</span>`;
 
       document.getElementById('github-sync-modal').classList.remove('hidden');
     }
@@ -1076,7 +1170,7 @@
       const token = document.getElementById('gh-token-input').value.trim();
 
       if (!owner || !repo || !token) {
-        showToast('GitHub 아이디, 저장소 이름, 토큰(PAT)을 모두 입력해 주세요.', 'warning');
+        showToast('아이디, 저장소 이름, 토큰을 모두 입력해 주세요.', 'warning');
         return;
       }
 
@@ -1088,9 +1182,9 @@
         const ok = await pullFromGitHub(true);
         if (ok) closeGitHubModal();
       } else {
-        const ok = await pushToGitHub('부부 공유 초기 설정 업로드');
+        const ok = await pushToGitHub('부부 공유 설정 업로드');
         if (ok) {
-          showToast('☁️ GitHub 저장소에 현재 카드 혜택과 실적 데이터가 저장되었습니다!');
+          showToast('☁️ GitHub 저장소에 현재 카드 설정이 저장되었습니다!');
           closeGitHubModal();
         }
       }
@@ -1110,26 +1204,20 @@
       ghConfig = { owner, repo, path, token };
       localStorage.setItem(GH_CONFIG_KEY, JSON.stringify(ghConfig));
 
-      const codePayload = JSON.stringify(ghConfig);
-      const inviteCode = 'WISECARD_SYNC::' + utf8ToBase64(codePayload);
-      copyTextToClipboard(inviteCode, '📋 부인 스마트폰 전달용 연동코드가 복사되었습니다! 카카오톡으로 보내주세요.');
+      const inviteCode = 'WISECARD_SYNC::' + utf8ToBase64(JSON.stringify(ghConfig));
+      copyTextToClipboard(inviteCode, '📋 부인 스마트폰 전달용 연동코드가 복사되었습니다!');
     }
 
     async function applyInviteSyncCode() {
       const rawCode = document.getElementById('gh-invite-code-input').value.trim();
       if (!rawCode) {
-        showToast('남편에게 받은 연동코드를 붙여넣어 주세요.', 'warning');
+        showToast('연동코드를 붙여넣어 주세요.', 'warning');
         return;
       }
-
       try {
         const cleaned = rawCode.replace(/^WISECARD_SYNC::/, '').trim();
-        const decoded = base64ToUtf8(cleaned);
-        const parsed = JSON.parse(decoded);
-
-        if (!parsed.owner || !parsed.repo || !parsed.token) {
-          throw new Error('Invalid code');
-        }
+        const parsed = JSON.parse(base64ToUtf8(cleaned));
+        if (!parsed.owner || !parsed.repo || !parsed.token) throw new Error('Invalid');
 
         ghConfig = {
           owner: parsed.owner,
@@ -1138,18 +1226,10 @@
           token: parsed.token
         };
         localStorage.setItem(GH_CONFIG_KEY, JSON.stringify(ghConfig));
-
-        document.getElementById('gh-owner-input').value = ghConfig.owner;
-        document.getElementById('gh-repo-input').value = ghConfig.repo;
-        document.getElementById('gh-path-input').value = ghConfig.path;
-        document.getElementById('gh-token-input').value = ghConfig.token;
-
         const ok = await pullFromGitHub(true);
-        if (ok) {
-          closeGitHubModal();
-        }
+        if (ok) closeGitHubModal();
       } catch (e) {
-        showToast('유효하지 않은 연동코드입니다. 코드 전체를 다시 복사해 붙여넣어 주세요.', 'warning');
+        showToast('유효하지 않은 연동코드입니다.', 'warning');
       }
     }
 
@@ -1172,7 +1252,7 @@
         el.style.opacity = '0';
         el.style.transition = 'opacity 0.25s';
         setTimeout(() => el.remove(), 250);
-      }, 2700);
+      }, 2500);
     }
 
     function openConfirmModal(title, msg, onOk) {
@@ -1193,7 +1273,41 @@
     });
 
     // =====================================================================
-    // 삼성카드 taptap O 라이프스타일 패키지 동기화 엔진
+    // 모달 열기 / 닫기 제어 (패키지 설정 / 혜택 직접 추가·수정 / 혜택 목록 On·Off)
+    // =====================================================================
+    function openTaptapModal() {
+      renderTaptapPackageSection();
+      document.getElementById('taptap-package-modal').classList.remove('hidden');
+    }
+
+    function closeTaptapModal() {
+      document.getElementById('taptap-package-modal').classList.add('hidden');
+    }
+
+    function openBenefitFormModal(prefillQuery = '') {
+      resetBenefitForm();
+      if (prefillQuery) {
+        document.getElementById('form-place-name').value = prefillQuery;
+        document.getElementById('form-keywords').value = prefillQuery;
+      }
+      document.getElementById('benefit-form-modal').classList.remove('hidden');
+    }
+
+    function closeBenefitFormModal() {
+      document.getElementById('benefit-form-modal').classList.add('hidden');
+    }
+
+    function openBenefitListModal() {
+      renderBenefitManagerSection();
+      document.getElementById('benefit-list-modal').classList.remove('hidden');
+    }
+
+    function closeBenefitListModal() {
+      document.getElementById('benefit-list-modal').classList.add('hidden');
+    }
+
+    // =====================================================================
+    // 삼성카드 taptap O 라이프스타일 패키지 설정 엔진
     // =====================================================================
     function applyTaptapPackageToBenefits(shouldSave = false, reasonLabel = '탭탭O 패키지 변경') {
       const pkg = appData.taptapPackage || { coffeeMode: 'coffee_10_30', shopping7Target: 'openmarket' };
@@ -1214,9 +1328,9 @@
       }
 
       const shoppingMap = [
-        { id: 'ben_taptap_openmarket', key: 'openmarket', label: '오픈마켓 (G마켓·옥션·11번가)' },
-        { id: 'ben_taptap_social', key: 'social', label: '소셜커머스 (쿠팡·티몬·위메프)' },
-        { id: 'ben_taptap_trendy', key: 'trendy', label: '트렌드샵 (올리브영·편의점·자라·유니클로·H&M)' }
+        { id: 'ben_taptap_openmarket', key: 'openmarket' },
+        { id: 'ben_taptap_social', key: 'social' },
+        { id: 'ben_taptap_trendy', key: 'trendy' }
       ];
 
       shoppingMap.forEach(item => {
@@ -1227,15 +1341,11 @@
           ben.benefitDetail = `[패키지 7% 선택] 7% 결제일 할인 (월 5,000원 한도, ※할인건 전월실적 제외)`;
         } else {
           ben.rate = 1;
-          ben.benefitDetail = `[패키지 자동적용] 1% 빅포인트 적립 (한도 제한 없음 · 할인 대신 1% 적립)`;
+          ben.benefitDetail = `[패키지 자동적용] 1% 빅포인트 적립 (할인 대신 1% 적립)`;
         }
       });
 
-      if (shouldSave) {
-        saveData(true, reasonLabel);
-      } else {
-        saveData(false);
-      }
+      saveData(shouldSave, reasonLabel);
     }
 
     function setTaptapCoffeeMode(mode) {
@@ -1244,7 +1354,7 @@
       renderTaptapPackageSection();
       renderBenefitManagerSection();
       runCardRecommendation(false);
-      showToast('삼성카드 taptap O 커피 패키지 설정이 즉시 반영되었습니다!');
+      showToast('삼성카드 taptap O 커피 패키지가 변경되었습니다!');
     }
 
     function setTaptapShoppingTarget(targetKey) {
@@ -1253,7 +1363,7 @@
       renderTaptapPackageSection();
       renderBenefitManagerSection();
       runCardRecommendation(false);
-      showToast('삼성카드 taptap O 쇼핑 7% / 1% 자동적립 설정이 반영되었습니다!');
+      showToast('삼성카드 taptap O 쇼핑 7% / 1% 패키지가 변경되었습니다!');
     }
 
     function renderTaptapPackageSection() {
@@ -1261,7 +1371,7 @@
 
       const coffeeContainer = document.getElementById('taptap-coffee-options');
       const coffeeOptions = [
-        { key: 'coffee_10_30', title: '10대 커피전문점 30% 할인 (현재 사용 중)', sub: '스타벅스·투썸·커피빈·폴바셋·할리스 등 10대 커피 30%' },
+        { key: 'coffee_10_30', title: '10대 커피전문점 30% 할인', sub: '스타벅스·투썸·커피빈·폴바셋·이디야 등 10대 커피 30%' },
         { key: 'starbucks_50', title: '스타벅스 단독 50% 할인', sub: '스타벅스만 50% 할인 (투썸 등 타 카페 할인 없음)' }
       ];
 
@@ -1285,7 +1395,7 @@
 
       const shoppingContainer = document.getElementById('taptap-shopping-options');
       const shoppingOptions = [
-        { key: 'openmarket', title: '오픈마켓 7% 할인 (현재 사용 중)', sub: 'G마켓·옥션·11번가 7% 할인 + (쿠팡·올리브영·편의점 1% 적립)' },
+        { key: 'openmarket', title: '오픈마켓 7% 할인', sub: 'G마켓·옥션·11번가 7% 할인 + (쿠팡·올리브영·편의점 1% 적립)' },
         { key: 'social', title: '소셜커머스 7% 할인', sub: '쿠팡·티몬·위메프 7% 할인 + (G마켓·올리브영·편의점 1% 적립)' },
         { key: 'trendy', title: '트렌드샵 7% 할인', sub: '올리브영·편의점·유니클로 7% 할인 + (G마켓·쿠팡 1% 적립)' }
       ];
@@ -1323,16 +1433,16 @@
 
       summaryEl.innerHTML = `
         <div class="font-extrabold text-emerald-900 mb-0.5">
-          ✅ 현재 적용된 패키지 기준: (혜택1) ${coffeeLabel} + (혜택2) ${shop7Label}
+          ✅ 현재 적용 패키지: (혜택1) ${coffeeLabel} + (혜택2) ${shop7Label}
         </div>
         <div class="text-emerald-800">
-          👉 자동 추가 적용: <strong>${shop1Label}</strong> (1% 적립 업종을 검색하면 기본 적립률이 1.5%이고 100만 원 실적을 채워야 하는 <strong>현대카드 MM</strong>을 1순위로 추천합니다!)
+          👉 자동 적용: <strong>${shop1Label}</strong>
         </div>
       `;
     }
 
     // =====================================================================
-    // ★ 1순위 핵심 기능: 사용처 검색 시 키보드 자동 닫기 + 추천 카드 즉시 스크롤 노출 ★
+    // ★ 핵심 추천 로직: [완료] 카드는 추천에서 무조건 제외하고 [미달] 카드 중 최적 추천 ★
     // =====================================================================
     function quickSearchPlace(placeKeyword) {
       const input = document.getElementById('usage-place-input');
@@ -1351,7 +1461,6 @@
       const rawQuery = (input.value || '').trim();
       currentSearchQuery = rawQuery;
 
-      // 스마트폰 가상 키보드가 화면 절반을 가리지 않도록 즉시 내림!
       if (shouldScrollToResult) {
         input.blur();
         if (document.activeElement && typeof document.activeElement.blur === 'function') {
@@ -1362,8 +1471,8 @@
       const outputEl = document.getElementById('recommendationResult');
       if (!rawQuery) {
         outputEl.innerHTML = `
-          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center text-xs sm:text-sm font-bold text-slate-600">
-            위 <span class="text-indigo-600">[사용처]</span> 칸에 업체명(예: 칼텍스, 올리브영, 투썸, G마켓)을 적고 <span class="text-indigo-600">[카드 추천]</span>을 눌러보세요!
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center text-xs sm:text-sm font-bold text-slate-500">
+            위 <span class="text-indigo-600">[사용처]</span> 칸에 업체명을 적고 <span class="text-indigo-600">[카드 추천]</span>을 눌러보세요.
           </div>
         `;
         return;
@@ -1373,7 +1482,8 @@
       const isExcludedWarning = EXCLUDED_SPEND_KEYWORDS.some(k => qLower.includes(k.toLowerCase()));
       const activeBenefits = appData.benefits.filter(b => b.active !== false);
 
-      const cardEvaluations = appData.cards.map(card => {
+      // 모든 카드의 해당 사용처 혜택 평가
+      const allCardEvaluations = appData.cards.map(card => {
         const cardBenefits = activeBenefits.filter(b => b.cardId === card.id);
         let matchedList = [];
 
@@ -1397,88 +1507,96 @@
 
         matchedList.sort((a, b) => b.numericRate - a.numericRate);
         const topMatch = matchedList[0] || null;
-
         const effectiveRate = topMatch ? topMatch.numericRate : Number(card.baseRate || 0);
-        const remainingSpend = Math.max(0, (card.targetSpend || 0) - (card.currentSpend || 0));
-        const isSpendMet = remainingSpend === 0;
 
-        const spendBonus = remainingSpend > 0 ? Math.min(0.4, remainingSpend / 2500000) : 0;
-        const finalRankScore = (effectiveRate * 100) + (spendBonus * 100);
+        // 목표 실적이 큰 카드(현대카드 MM 100만원)에 미세 가산점 부여 (동률 또는 일반매장 시 우선)
+        const targetBonus = (card.targetSpend || 300000) / 2500000;
+        const rawScore = (effectiveRate * 100) + (targetBonus * 100);
 
         return {
           card,
           topMatch,
           effectiveRate,
-          remainingSpend,
-          isSpendMet,
-          finalRankScore
+          isCompleted: Boolean(card.isCompleted),
+          rawScore
         };
       });
 
-      cardEvaluations.sort((a, b) => b.finalRankScore - a.finalRankScore);
+      // ★ 핵심 규칙: [미달 (!isCompleted)] 상태인 카드만 추천 후보로 필터링
+      const eligibleEvaluations = allCardEvaluations
+        .filter(ev => !ev.isCompleted)
+        .sort((a, b) => b.rawScore - a.rawScore);
 
-      const winner = cardEvaluations[0];
+      // [완료]된 카드 중 더 높은 혜택을 가진 카드가 있었는지 확인 (추천 이유 안내용)
+      const completedEvaluations = allCardEvaluations
+        .filter(ev => ev.isCompleted)
+        .sort((a, b) => b.rawScore - a.rawScore);
+
+      // 비교표 정렬: 1순위 추천 카드 -> 나머지 [미달] 카드 -> [완료(추천 제외)] 카드 순
+      const sortedForComparison = [...eligibleEvaluations, ...completedEvaluations];
+
+      // 만약 3장 모두 [완료]로 선택된 경우
+      if (eligibleEvaluations.length === 0) {
+        outputEl.innerHTML = `
+          <div class="space-y-3 animate-recommend-pop">
+            <div class="p-4 rounded-2xl bg-slate-800 text-white space-y-2 shadow-md">
+              <div class="flex items-center gap-2 text-amber-300 font-extrabold text-sm">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>이번 달 모든 카드의 최소 사용금액이 [완료] 상태입니다!</span>
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed">
+                현재 3장의 카드가 모두 <strong>[완료]</strong>로 설정되어 추천 대상에서 제외되었습니다. 카드를 추천받으시려면 아래 <strong>&lt;이번 달 카드별 최소 사용금액 현황&gt;</strong>에서 사용할 카드를 <strong>[미달]</strong>로 변경해 주세요.
+              </p>
+            </div>
+            ${renderThreeCardComparisonHtml(rawQuery, sortedForComparison, null)}
+          </div>
+        `;
+        if (shouldScrollToResult) {
+          setTimeout(() => outputEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 90);
+        }
+        return;
+      }
+
+      const winner = eligibleEvaluations[0];
       const winnerTheme = CARD_THEMES[winner.card.theme] || CARD_THEMES.slate;
 
-      const taptapEval = cardEvaluations.find(e => e.card.id === 'card_samsung_taptap_o');
+      // 원래 혜택은 더 높았지만 [완료] 상태라서 제외된 카드가 있는지 체크
+      const skippedHigherCompletedCard = completedEvaluations.find(cEv => cEv.effectiveRate > winner.effectiveRate);
+
+      // 삼성 탭탭O가 [미달]인데 1% 적립 업종(올리브영/쿠팡 등)이라서 현대카드 MM(1.5%)이 이긴 경우 체크
+      const taptapEval = eligibleEvaluations.find(e => e.card.id === 'card_samsung_taptap_o');
       const isTaptap1PercentCase =
         winner.card.id === 'card_hyundai_mm' &&
         taptapEval &&
         taptapEval.topMatch &&
         taptapEval.effectiveRate === 1;
 
-      let bannerHtml = '';
       let reasonHtml = '';
 
-      if (isTaptap1PercentCase) {
-        bannerHtml = `
-          <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-xl bg-amber-50 border border-amber-300 text-xs">
-            <div class="flex items-center gap-1.5 font-bold text-amber-950">
-              <span class="px-2 py-0.5 rounded bg-amber-600 text-white text-[10px]">패키지 정밀 비교</span>
-              <span>'<strong>${rawQuery}</strong>' 검색 결과: 삼성탭탭O는 <strong>1% 적립</strong> vs 현대카드 MM은 <strong>${winner.effectiveRate}% 적립 + 실적합산</strong></span>
-            </div>
+      if (skippedHigherCompletedCard) {
+        reasonHtml += `
+          <div class="mb-1.5 px-2.5 py-1.5 rounded-lg bg-black/25 text-amber-200 text-xs font-bold">
+            ℹ️ <strong>${skippedHigherCompletedCard.card.name}</strong>(${skippedHigherCompletedCard.topMatch ? skippedHigherCompletedCard.topMatch.benefitDetail : skippedHigherCompletedCard.card.baseBenefitText})는 이번 달 사용금액이 <strong>[완료]</strong>되어 추천에서 제외되었습니다.
           </div>
         `;
-        reasonHtml = `
-          위아래님이 선택하신 삼성카드 taptap O 패키지<strong>(10대 커피 30% + 오픈마켓 7% 할인)</strong>에서는 <strong>'${rawQuery}'</strong> 사용처가 7% 할인이 아닌 <strong>1% 적립</strong>만 적용됩니다.<br/>
-          따라서 1% 적립보다 높은 <strong>${winner.effectiveRate}% M포인트 적립</strong>을 받으면서 동시에 한 달 최소 사용 금액(100만 원, 현재 ${formatKRW(winner.remainingSpend)} 부족)도 채울 수 있는 <strong>현대카드 MM</strong>을 사용하시는 것이 훨씬 유리합니다!
+      }
+
+      if (isTaptap1PercentCase) {
+        reasonHtml += `
+          선택하신 삼성카드 taptap O 패키지에서는 <strong>'${rawQuery}'</strong> 사용처가 <strong>1% 적립</strong>만 적용됩니다. 따라서 <strong>[미달]</strong> 카드 중 적립률이 <strong>${winner.effectiveRate}%</strong>로 더 높고 월 100만 원 실적도 채워야 하는 <strong>현대카드 MM</strong>을 추천합니다!
         `;
       } else if (winner.topMatch && winner.effectiveRate >= 3) {
-        const repPlace = winner.topMatch.placeName;
-        bannerHtml = `
-          <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-xl bg-indigo-50 border border-indigo-200 text-xs">
-            <div class="flex items-center gap-1.5 font-bold text-indigo-950">
-              <span class="px-2 py-0.5 rounded bg-indigo-600 text-white text-[10px]">특별 혜택 매칭</span>
-              <span>'<strong>${rawQuery}</strong>' <i class="fa-solid fa-arrow-right mx-1 text-indigo-400"></i> <strong class="text-indigo-700 underline">[${repPlace}]</strong> 혜택 확인!</span>
-            </div>
-          </div>
-        `;
-        const secondEval = cardEvaluations[1];
-        const secondCompareText = secondEval
-          ? ` (2순위 ${secondEval.card.name}의 ${secondEval.topMatch ? secondEval.topMatch.benefitDetail : secondEval.card.baseBenefitText}보다 혜택이 더 큽니다.)`
-          : '';
-        reasonHtml = `
-          <strong>'${rawQuery}'</strong> 사용처에서는 <strong>${winner.card.name}</strong>의 <strong>[${repPlace} : ${winner.topMatch.benefitDetail}]</strong> 혜택이 보유하신 카드 중 가장 큽니다!${secondCompareText}
+        reasonHtml += `
+          현재 최소 사용금액이 <strong>[미달]</strong>인 카드 중에서 <strong>'${rawQuery}'</strong> 사용처 혜택(<strong>[${winner.topMatch.placeName}] ${winner.topMatch.benefitDetail}</strong>)이 가장 큰 카드입니다!
         `;
       } else {
-        bannerHtml = `
-          <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-xl bg-slate-100 border border-slate-300 text-xs">
-            <div class="flex items-center gap-1.5 font-bold text-slate-800">
-              <span class="px-2 py-0.5 rounded bg-slate-800 text-white text-[10px]">실적 + 기본혜택 추천</span>
-              <span>'<strong>${rawQuery}</strong>' 사용처는 특별 할인이 없어 <strong>기본 적립률(1.5%) + 100만 원 실적 채우기</strong> 기준으로 추천합니다.</span>
-            </div>
-          </div>
-        `;
-        reasonHtml = `
-          입력하신 <strong>'${rawQuery}'</strong> 사용처는 다른 카드의 특별 할인이 없는 곳입니다.<br/>
-          기본 적립률이 <strong>${winner.effectiveRate}%</strong>로 가장 높고, 이번 달 목표 실적(${formatKRW(winner.card.targetSpend)})까지 <strong>${formatKRW(winner.remainingSpend)}</strong>을 더 채워야 하는 <strong>${winner.card.name}</strong>로 결제하시는 것이 가장 이득입니다!
+        reasonHtml += `
+          <strong>'${rawQuery}'</strong> 사용처는 특별 할인이 없는 곳이므로, 현재 <strong>[미달]</strong> 상태인 카드 중 기본 혜택(<strong>${winner.card.baseBenefitText}</strong>)과 최소 사용금액(${winner.card.minSpendLabel}) 달성에 가장 유리한 <strong>${winner.card.name}</strong>을 추천합니다!
         `;
       }
 
       outputEl.innerHTML = `
         <div id="winner-card-focus-target" class="space-y-3 animate-recommend-pop scroll-mt-16">
-          ${bannerHtml}
-
           ${isExcludedWarning ? `
             <div class="p-3 rounded-xl bg-rose-50 border border-rose-300 text-xs text-rose-900 flex items-start gap-2">
               <i class="fa-solid fa-triangle-exclamation text-rose-600 mt-0.5"></i>
@@ -1488,23 +1606,21 @@
             </div>
           ` : ''}
 
-          <!-- 1순위 추천 카드 메인 박스 (눈에 확 띄는 강조 테두리 적용) -->
-          <div id="winner-card-hero" class="${winnerTheme.gradient} card-shine rounded-2xl p-4 sm:p-5 text-white shadow-xl ring-4 ring-amber-400/80 space-y-2.5 transition-all">
+          <!-- 1순위 추천 카드 메인 박스 (결제금액 합산 계산기 없이 깔끔하게 추천 이유만 표시) -->
+          <div id="winner-card-hero" class="${winnerTheme.gradient} card-shine rounded-2xl p-4 sm:p-5 text-white shadow-lg ring-4 ring-amber-400/80 space-y-2.5">
             <div class="flex flex-wrap items-center justify-between gap-2">
               <span class="px-2.5 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black shadow-xs">
-                🏆 '${rawQuery}' 1순위 추천 카드
+                🏆 '${rawQuery}' 추천 카드
               </span>
-              <span class="text-xs font-bold text-white/90">
-                ${winner.remainingSpend > 0
-                  ? `이번 달 실적 ${formatKRW(winner.remainingSpend)} 더 필요`
-                  : `✅ 이번 달 목표 실적 달성 완료`}
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/20 text-white">
+                실적 미달 · 기준 ${winner.card.minSpendLabel}
               </span>
             </div>
 
             <div class="space-y-1">
               <div class="text-2xl sm:text-3xl font-black tracking-tight">${winner.card.name}</div>
               <div class="inline-block px-3 py-1 rounded-lg bg-black/30 text-amber-300 font-extrabold text-xs sm:text-sm">
-                🎁 적용 혜택 : ${winner.topMatch ? `[${winner.topMatch.placeName}] ${winner.topMatch.benefitDetail}` : winner.card.baseBenefitText}
+                🎁 ${winner.topMatch ? `[${winner.topMatch.placeName}] ${winner.topMatch.benefitDetail}` : winner.card.baseBenefitText}
               </div>
             </div>
 
@@ -1514,144 +1630,193 @@
               </div>
               <div>${reasonHtml}</div>
             </div>
-
-            ${winner.card.cautionNote ? `
-              <div class="text-[11px] text-white/85 flex items-center gap-1.5 pt-0.5">
-                <i class="fa-solid fa-circle-info"></i>
-                <span>${winner.card.cautionNote}</span>
-              </div>
-            ` : ''}
           </div>
 
-          <!-- 결제 금액 즉시 실적 합산 바 -->
-          <div class="p-3 rounded-xl bg-slate-900 text-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <div class="text-xs font-bold flex items-center gap-1.5">
-              <i class="fa-solid fa-bolt text-amber-400"></i>
-              <span>결제 금액을 이번 달 실적에 바로 더하기 (부부 자동공유):</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <select id="quick-record-card" class="px-2 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-bold text-white">
-                ${cardEvaluations.map(ev => `<option value="${ev.card.id}">${ev.card.name}</option>`).join('')}
-              </select>
-              <input type="number" id="quick-record-amount" value="30000" step="5000" class="w-24 px-2 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-bold text-white text-right" />
-              <span class="text-xs text-slate-400">원</span>
-              <button onclick="recordPaymentToCard()" class="px-3 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white text-xs font-extrabold shrink-0 cursor-pointer">
-                + 실적 합산
-              </button>
-            </div>
-          </div>
-
-          <!-- 내 카드 3종 비교 표 -->
-          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold text-slate-700">'${rawQuery}' 사용 시 내 카드 3종 비교</span>
-              <button
-                onclick="prefillBenefitFormWithQuery('${rawQuery.replace(/'/g, "\\'")}')"
-                class="text-[11px] font-bold text-indigo-600 hover:underline flex items-center gap-1 cursor-pointer"
-              >
-                <i class="fa-solid fa-plus-circle"></i> '${rawQuery}' 혜택 직접 추가
-              </button>
-            </div>
-
-            <div class="space-y-1.5">
-              ${cardEvaluations.map((ev, idx) => {
-                const isFirst = idx === 0;
-                return `
-                  <div class="p-2.5 rounded-xl bg-white border ${isFirst ? 'border-indigo-500 ring-1 ring-indigo-500/30' : 'border-slate-200'} flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
-                    <div class="space-y-0.5">
-                      <div class="flex items-center gap-1.5 flex-wrap">
-                        <span class="text-xs font-extrabold ${isFirst ? 'text-indigo-700' : 'text-slate-800'}">
-                          ${idx + 1}순위 · ${ev.card.name}
-                        </span>
-                        <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-slate-100 text-slate-700">
-                          체감 약 ${ev.effectiveRate}%
-                        </span>
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${ev.isSpendMet ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
-                          ${ev.isSpendMet ? '실적 달성완료' : `실적 ${formatKRW(ev.remainingSpend)} 부족`}
-                        </span>
-                      </div>
-                      <div class="text-xs ${ev.topMatch ? 'font-bold text-slate-900' : 'text-slate-500'}">
-                        ${ev.topMatch
-                          ? `<span class="text-indigo-600">[${ev.topMatch.placeName}]</span> ${ev.topMatch.benefitDetail}`
-                          : `특별 혜택 없음 (${ev.card.baseBenefitText})`
-                        }
-                      </div>
-                    </div>
-                  </div>
-                `;
-              }).join('')}
-            </div>
-          </div>
+          <!-- 'OO' 이용 시 내 카드 3종 비교 (유지) -->
+          ${renderThreeCardComparisonHtml(rawQuery, sortedForComparison, winner.card.id)}
         </div>
       `;
 
-      // ★ 스마트폰에서 <카드 추천> 클릭 시 손가락으로 스크롤하지 않아도 추천 카드가 화면 상단에 즉시 보이도록 자동 스크롤!
       if (shouldScrollToResult) {
         setTimeout(() => {
           outputEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+        }, 90);
       }
     }
 
-    function prefillBenefitFormWithQuery(queryText) {
-      resetBenefitForm();
-      document.getElementById('form-place-name').value = queryText;
-      document.getElementById('form-keywords').value = queryText;
-      document.getElementById('section-benefit-manager').scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        document.getElementById('form-benefit-detail').focus();
-      }, 350);
-      showToast(`'${queryText}' 사용처가 입력칸에 채워졌습니다!`, 'info');
-    }
+    function renderThreeCardComparisonHtml(rawQuery, evaluations, winnerCardId) {
+      return `
+        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold text-slate-800">'${rawQuery}' 이용 시 내 카드 3종 비교</span>
+            <button
+              onclick="openBenefitFormModal('${rawQuery.replace(/'/g, "\\'")}')"
+              class="text-[11px] font-bold text-indigo-600 hover:underline flex items-center gap-1 cursor-pointer"
+            >
+              <i class="fa-solid fa-plus-circle"></i> '${rawQuery}' 혜택 추가
+            </button>
+          </div>
 
-    function recordPaymentToCard() {
-      const cardId = document.getElementById('quick-record-card').value;
-      const amount = Number(document.getElementById('quick-record-amount').value || 0);
-      if (amount <= 0) {
-        showToast('결제 금액을 입력해 주세요.', 'warning');
-        return;
-      }
-      const card = appData.cards.find(c => c.id === cardId);
-      if (!card) return;
-      card.currentSpend = (card.currentSpend || 0) + amount;
-      saveData(true, `${card.name} ${formatKRW(amount)} 결제 실적 반영`);
-      renderSpendStatusSection();
-      runCardRecommendation(false);
-      showToast(`${card.name} 사용 금액에 ${formatKRW(amount)}이 합산되었습니다!`);
+          <div class="space-y-1.5">
+            ${evaluations.map(ev => {
+              const isWinner = ev.card.id === winnerCardId;
+              const isDone = ev.isCompleted;
+              return `
+                <div class="p-2.5 rounded-xl border transition ${
+                  isWinner
+                    ? 'bg-white border-indigo-500 ring-1 ring-indigo-500/30'
+                    : isDone
+                      ? 'bg-slate-100/80 border-slate-200 opacity-60'
+                      : 'bg-white border-slate-200'
+                } flex items-center justify-between gap-2">
+                  <div class="space-y-0.5 min-w-0 flex-1">
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                      <span class="text-xs font-extrabold ${isWinner ? 'text-indigo-700' : isDone ? 'text-slate-500 line-through' : 'text-slate-800'}">
+                        ${ev.card.name}
+                      </span>
+                      ${isWinner
+                        ? `<span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-indigo-600 text-white">추천 1순위</span>`
+                        : isDone
+                          ? `<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-300 text-slate-700">완료 · 추천 제외됨</span>`
+                          : `<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">미달 · 후보</span>`
+                      }
+                    </div>
+                    <div class="text-xs truncate ${ev.topMatch ? 'font-bold text-slate-900' : 'text-slate-500'}">
+                      ${ev.topMatch
+                        ? `<span class="text-indigo-600">[${ev.topMatch.placeName}]</span> ${ev.topMatch.benefitDetail}`
+                        : `특별 혜택 없음 (${ev.card.baseBenefitText})`
+                      }
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
     }
 
     // =====================================================================
-    // 혜택 직접 추가 / 수치 수정 / 활성화(ON/OFF) 관리 (수정 즉시 GitHub 자동 저장)
+    // 이번 달 카드별 최소 사용금액 현황: 수동 [미달 / 완료] 스위치
+    // =====================================================================
+    function renderSpendStatusSection() {
+      const listEl = document.getElementById('spend-status-list');
+      listEl.innerHTML = appData.cards.map(card => {
+        const theme = CARD_THEMES[card.theme] || CARD_THEMES.slate;
+        const isDone = Boolean(card.isCompleted);
+
+        return `
+          <div class="p-3.5 rounded-xl border transition flex items-center justify-between gap-3 ${
+            isDone ? 'bg-slate-100/80 border-slate-200' : 'bg-white border-slate-200 shadow-2xs'
+          }">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-md ${theme.solidBadge}">
+                  ${card.name}
+                </span>
+                <span class="text-xs font-bold text-slate-500">
+                  최소 기준: ${card.minSpendLabel}
+                </span>
+              </div>
+              <div class="text-[11px] font-bold mt-1 ${isDone ? 'text-slate-500' : 'text-indigo-700'}">
+                ${isDone
+                  ? '✅ 이번 달 사용 완료 (카드 추천에서 제외됨)'
+                  : '🔥 현재 실적 미달 (카드 추천 활성 상태)'}
+              </div>
+            </div>
+
+            <!-- 직관적인 [미달 / 완료] 2버튼 스위치 -->
+            <div class="inline-flex rounded-xl p-1 bg-slate-200/80 shrink-0">
+              <button
+                type="button"
+                onclick="setCardCompletedStatus('${card.id}', false)"
+                class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+                  !isDone
+                    ? 'bg-indigo-600 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }"
+              >
+                미달
+              </button>
+              <button
+                type="button"
+                onclick="setCardCompletedStatus('${card.id}', true)"
+                class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+                  isDone
+                    ? 'bg-slate-800 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }"
+              >
+                완료
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setCardCompletedStatus(cardId, completedState) {
+      const card = appData.cards.find(c => c.id === cardId);
+      if (!card) return;
+      if (Boolean(card.isCompleted) === Boolean(completedState)) return;
+
+      card.isCompleted = Boolean(completedState);
+      saveData(true, `${card.name} 실적 상태 [${card.isCompleted ? '완료' : '미달'}] 변경`);
+      renderSpendStatusSection();
+      runCardRecommendation(false);
+      showToast(
+        card.isCompleted
+          ? `${card.name}가 [완료] 처리되어 추천에서 제외됩니다.`
+          : `${card.name}가 [미달] 상태로 변경되어 다시 추천됩니다.`
+      );
+    }
+
+    function resetAllCardsToUnmet() {
+      appData.cards.forEach(c => { c.isCompleted = false; });
+      saveData(true, '모든 카드 [미달] 상태로 초기화');
+      renderSpendStatusSection();
+      runCardRecommendation(false);
+      showToast('모든 카드가 [미달] 상태로 초기화되어 전체 카드가 추천 대상이 됩니다!');
+    }
+
+    // =====================================================================
+    // 혜택 직접 추가 / 수정 & 등록된 혜택 목록 On/Off 모달 관리
     // =====================================================================
     function renderBenefitManagerSection() {
       const selectEl = document.getElementById('form-card-select');
-      const prevVal = selectEl.value;
-      selectEl.innerHTML = appData.cards.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
-      if (prevVal && appData.cards.some(c => c.id === prevVal)) {
-        selectEl.value = prevVal;
+      if (selectEl) {
+        const prevVal = selectEl.value;
+        selectEl.innerHTML = appData.cards.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+        if (prevVal && appData.cards.some(c => c.id === prevVal)) {
+          selectEl.value = prevVal;
+        }
       }
 
       const tabsEl = document.getElementById('benefit-filter-tabs');
-      const filterItems = [{ id: 'ALL', name: `전체 (${appData.benefits.length})` }, ...appData.cards.map(c => ({
-        id: c.id,
-        name: `${c.name} (${appData.benefits.filter(b => b.cardId === c.id).length})`
-      }))];
+      if (tabsEl) {
+        const filterItems = [{ id: 'ALL', name: `전체 (${appData.benefits.length})` }, ...appData.cards.map(c => ({
+          id: c.id,
+          name: `${c.name} (${appData.benefits.filter(b => b.cardId === c.id).length})`
+        }))];
 
-      tabsEl.innerHTML = filterItems.map(tab => {
-        const active = currentFilterCardId === tab.id;
-        return `
-          <button
-            onclick="setBenefitFilter('${tab.id}')"
-            class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-              active ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
-            }"
-          >
-            ${tab.name}
-          </button>
-        `;
-      }).join('');
+        tabsEl.innerHTML = filterItems.map(tab => {
+          const active = currentFilterCardId === tab.id;
+          return `
+            <button
+              onclick="setBenefitFilter('${tab.id}')"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                active ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              }"
+            >
+              ${tab.name}
+            </button>
+          `;
+        }).join('');
+      }
 
       const listEl = document.getElementById('benefit-list-container');
+      if (!listEl) return;
+
       const filtered = currentFilterCardId === 'ALL'
         ? appData.benefits
         : appData.benefits.filter(b => b.cardId === currentFilterCardId);
@@ -1666,15 +1831,12 @@
           <div class="p-3.5 rounded-xl border transition ${
             isActive ? 'bg-white border-slate-200 shadow-2xs' : 'bg-slate-100/70 border-slate-200 opacity-60'
           } flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div class="space-y-1.5 min-w-0 flex-1">
-              <div class="flex items-center gap-2 flex-wrap">
+            <div class="space-y-1 min-w-0 flex-1">
+              <div class="flex items-center gap-1.5 flex-wrap">
                 <span class="text-[11px] font-extrabold px-2 py-0.5 rounded-md border ${theme.badge}">
                   ${cardName}
                 </span>
                 <span class="font-extrabold text-sm text-slate-900">${b.placeName}</span>
-                <span class="text-[11px] font-extrabold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700">
-                  체감 ${b.rate}%
-                </span>
               </div>
 
               <div class="text-xs font-bold text-emerald-700">
@@ -1682,14 +1844,10 @@
               </div>
 
               <div class="flex flex-wrap items-center gap-1 pt-0.5">
-                <span class="text-[10px] text-slate-400 mr-0.5">검색어(터치시 추천):</span>
                 ${(b.keywords || []).map(kw => `
-                  <button
-                    onclick="quickSearchPlace('${kw.replace(/'/g, "\\'")}');"
-                    class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-700 transition cursor-pointer"
-                  >
+                  <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
                     #${kw}
-                  </button>
+                  </span>
                 `).join('')}
               </div>
             </div>
@@ -1697,7 +1855,7 @@
             <div class="flex items-center justify-between sm:justify-end gap-2.5 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">
               <label class="inline-flex items-center gap-2 cursor-pointer select-none">
                 <span class="text-xs font-extrabold ${isActive ? 'text-emerald-600' : 'text-slate-400'}">
-                  ${isActive ? '활성화 ON' : '꺼짐 OFF'}
+                  ${isActive ? 'ON' : 'OFF'}
                 </span>
                 <button
                   type="button"
@@ -1744,7 +1902,7 @@
       saveData(true, `${item.placeName} 혜택 ${item.active ? 'ON' : 'OFF'}`);
       renderBenefitManagerSection();
       runCardRecommendation(false);
-      showToast(`[${item.placeName}] 혜택이 ${item.active ? '활성화(ON)' : '비활성화(OFF)'}되었습니다.`);
+      showToast(`[${item.placeName}] 혜택이 ${item.active ? 'ON' : 'OFF'} 되었습니다.`);
     }
 
     function saveCustomBenefit() {
@@ -1788,11 +1946,11 @@
           active: true,
           isPackageManaged: false
         });
-        showToast(`🎉 [${placeName}] 혜택이 추가되고 활성화되었습니다!`);
+        showToast(`🎉 [${placeName}] 혜택이 추가되었습니다!`);
         saveData(true, `${placeName} 혜택 추가`);
       }
 
-      resetBenefitForm();
+      closeBenefitFormModal();
       renderBenefitManagerSection();
       document.getElementById('usage-place-input').value = placeName;
       runCardRecommendation(true);
@@ -1802,6 +1960,9 @@
       const item = appData.benefits.find(b => b.id === benefitId);
       if (!item) return;
 
+      closeBenefitListModal();
+      renderBenefitManagerSection();
+
       document.getElementById('form-editing-benefit-id').value = item.id;
       document.getElementById('form-card-select').value = item.cardId;
       document.getElementById('form-place-name').value = item.placeName;
@@ -1809,21 +1970,20 @@
       document.getElementById('form-keywords').value = (item.keywords || []).join(', ');
       document.getElementById('form-benefit-detail').value = item.benefitDetail;
 
-      document.getElementById('benefit-form-title').innerHTML = `<i class="fa-solid fa-pen text-amber-600"></i> <span>[${item.placeName}] 혜택 수정 중</span>`;
-      document.getElementById('save-benefit-btn').innerHTML = `<i class="fa-solid fa-check"></i> <span>수정 내용 저장하기</span>`;
-      document.getElementById('cancel-edit-benefit-btn').classList.remove('hidden');
-      document.getElementById('section-benefit-manager').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('benefit-form-title').textContent = `[${item.placeName}] 혜택 수정`;
+      document.getElementById('save-benefit-btn').innerHTML = `<i class="fa-solid fa-check"></i> <span>수정 내용 저장</span>`;
+      document.getElementById('benefit-form-modal').classList.remove('hidden');
     }
 
     function resetBenefitForm() {
+      renderBenefitManagerSection();
       document.getElementById('form-editing-benefit-id').value = '';
       document.getElementById('form-place-name').value = '';
       document.getElementById('form-benefit-rate').value = '5';
       document.getElementById('form-keywords').value = '';
       document.getElementById('form-benefit-detail').value = '';
-      document.getElementById('benefit-form-title').innerHTML = `<i class="fa-solid fa-pen-to-square text-indigo-600"></i> <span>새로운 카드 혜택 직접 적어 넣기</span>`;
-      document.getElementById('save-benefit-btn').innerHTML = `<i class="fa-solid fa-check"></i> <span>혜택 저장 및 즉시 활성화</span>`;
-      document.getElementById('cancel-edit-benefit-btn').classList.add('hidden');
+      document.getElementById('benefit-form-title').textContent = '내 카드 혜택 직접 추가';
+      document.getElementById('save-benefit-btn').innerHTML = `<i class="fa-solid fa-check"></i> <span>혜택 저장 및 활성화</span>`;
     }
 
     function deleteBenefitItem(benefitId) {
@@ -1842,110 +2002,21 @@
       );
     }
 
-    // =====================================================================
-    // 이번 달 카드별 실적 현황 관리
-    // =====================================================================
-    function renderSpendStatusSection() {
-      const listEl = document.getElementById('spend-status-list');
-      listEl.innerHTML = appData.cards.map(card => {
-        const theme = CARD_THEMES[card.theme] || CARD_THEMES.slate;
-        const target = card.targetSpend || 0;
-        const current = card.currentSpend || 0;
-        const pct = target > 0 ? Math.min(100, Math.round((current / target) * 100)) : 100;
-        const remain = Math.max(0, target - current);
-        const isDone = remain === 0;
-
-        return `
-          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
-            <div class="flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-md ${theme.solidBadge}">${card.name}</span>
-                ${isDone
-                  ? `<span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">✅ 목표 실적 달성 완료</span>`
-                  : `<span class="text-xs font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full">목표까지 ${formatKRW(remain)} 남음</span>`
-                }
-              </div>
-              <button
-                onclick="openSpendModal('${card.id}')"
-                class="px-3 py-1 rounded-lg bg-white border border-slate-300 hover:border-indigo-500 text-xs font-bold text-slate-700 hover:text-indigo-600 transition cursor-pointer"
-              >
-                금액 수정
-              </button>
-            </div>
-
-            <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
-              <div class="h-full ${isDone ? 'bg-emerald-500' : theme.bar} transition-all duration-500" style="width: ${pct}%"></div>
-            </div>
-
-            <div class="flex items-center justify-between text-xs text-slate-600">
-              <span>현재 사용액: <strong class="text-slate-900">${formatKRW(current)}</strong> / 최소 목표: <strong>${formatKRW(target)}</strong></span>
-              <span class="font-extrabold">${pct}%</span>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function openSpendModal(cardId) {
-      const card = appData.cards.find(c => c.id === cardId);
-      if (!card) return;
-      editingSpendCardId = cardId;
-      document.getElementById('spend-modal-title').textContent = `${card.name} 사용 금액 수정`;
-      document.getElementById('spend-modal-current').value = card.currentSpend || 0;
-      document.getElementById('spend-modal-target').value = card.targetSpend || 0;
-      document.getElementById('spend-edit-modal').classList.remove('hidden');
-    }
-
-    function closeSpendModal() {
-      document.getElementById('spend-edit-modal').classList.add('hidden');
-      editingSpendCardId = null;
-    }
-
-    function addSpendInput(delta) {
-      const input = document.getElementById('spend-modal-current');
-      input.value = Math.max(0, Number(input.value || 0) + delta);
-    }
-
-    function saveSpendModal() {
-      const card = appData.cards.find(c => c.id === editingSpendCardId);
-      if (!card) return;
-      card.currentSpend = Math.max(0, Number(document.getElementById('spend-modal-current').value || 0));
-      card.targetSpend = Math.max(0, Number(document.getElementById('spend-modal-target').value || 0));
-      saveData(true, `${card.name} 실적 금액 수정`);
-      closeSpendModal();
-      renderSpendStatusSection();
-      runCardRecommendation(false);
-      showToast(`${card.name} 실적 정보가 업데이트되었습니다!`);
-    }
-
-    function confirmResetAllSpend() {
-      openConfirmModal(
-        '이번 달 사용액 0원 초기화',
-        '모든 카드의 이번 달 현재 사용 금액을 0원으로 초기화하시겠습니까?',
-        () => {
-          appData.cards.forEach(c => { c.currentSpend = 0; });
-          saveData(true, '매월 1일 실적 0원 초기화');
-          renderSpendStatusSection();
-          runCardRecommendation(false);
-          showToast('이번 달 사용 금액이 0원으로 초기화되었습니다!');
-        }
-      );
-    }
-
     function confirmRestoreInitialData() {
       openConfirmModal(
-        '초기 설정 복원',
-        '위아래님의 탭탭O 패키지(10대 커피 30% + 오픈마켓 7% + 쿠팡·올리브영 1%), 신한 Love(GS칼텍스 60원), 현대 MM 초기 데이터로 복원하시겠습니까?',
+        '초기 데이터 복원',
+        '탭탭O 패키지(10대 커피 30% + 오픈마켓 7%), 신한 Love(GS칼텍스 60원), 현대 MM 초기 데이터로 복원하시겠습니까?',
         () => {
           appData = getInitialAppData();
-          saveData(true, '초기 설정 복원');
+          saveData(true, '초기 데이터 복원');
           currentFilterCardId = 'ALL';
-          document.getElementById('usage-place-input').value = '칼텍스';
+          document.getElementById('usage-place-input').value = 'GS칼텍스';
           renderTaptapPackageSection();
           renderBenefitManagerSection();
           renderSpendStatusSection();
+          updateMenuButtonSummaries();
           runCardRecommendation(true);
-          showToast('초기 맞춤 패키지 상태로 복원되었습니다!');
+          showToast('초기 상태로 복원되었습니다!');
         }
       );
     }
@@ -1957,10 +2028,10 @@
       renderTaptapPackageSection();
       renderBenefitManagerSection();
       renderSpendStatusSection();
+      updateMenuButtonSummaries();
       runCardRecommendation(false);
       updateSyncStatusBadge('idle');
 
-      // GitHub 연동이 설정되어 있으면 앱을 켜는 순간 자동으로 최신 부부 공유 데이터를 불러옴!
       if (isGitHubConfigured()) {
         await pullFromGitHub(false);
       }
