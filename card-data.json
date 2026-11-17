@@ -13,7 +13,7 @@
       "baseRate": 1.5,
       "baseBenefitText": "국내외 전 가맹점 기본 1.5% M포인트 무제한 적립",
       "cautionNote": "💡 월 최소 사용 금액(100만 원)이 높고 기본 적립률이 1.5%로 높아서, 다른 카드가 1% 적립이거나 무할인인 곳에서는 이 카드가 1순위입니다!",
-      "isCompleted": true,
+      "isCompleted": false,
       "minSpendLabel": "월 100만 원"
     },
     {
@@ -331,5 +331,5 @@
       "isPackageManaged": false
     }
   ],
-  "updatedAt": "2026-11-17T07:11:00.628Z"
+  "updatedAt": "2026-11-17T07:11:02.515Z"
 }
