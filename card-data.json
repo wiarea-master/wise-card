@@ -1,4 +1,5 @@
 {
+  "updatedAt": "2026-11-17T09:15:47.561Z",
   "taptapPackage": {
     "coffeeMode": "coffee_10_30",
     "shopping7Target": "openmarket"
@@ -8,58 +9,37 @@
       "id": "card_hyundai_mm",
       "name": "현대카드 MM",
       "theme": "slate",
+      "minSpendLabel": "월 100만 원",
       "targetSpend": 1000000,
-      "currentSpend": 650000,
+      "isCompleted": false,
       "baseRate": 1.5,
       "baseBenefitText": "국내외 전 가맹점 기본 1.5% M포인트 무제한 적립",
-      "cautionNote": "💡 월 최소 사용 금액(100만 원)이 높고 기본 적립률이 1.5%로 높아서, 다른 카드가 1% 적립이거나 무할인인 곳에서는 이 카드가 1순위입니다!",
-      "isCompleted": false,
-      "minSpendLabel": "월 100만 원"
+      "cautionNote": "💡 월 최소 사용 기준(100만 원)이 가장 높고 기본 적립률도 1.5%로 높아서 일반 가맹점 1순위 카드입니다."
     },
     {
       "id": "card_samsung_taptap_o",
       "name": "삼성카드 taptap O",
       "theme": "emerald",
+      "minSpendLabel": "월 30만 원",
       "targetSpend": 300000,
-      "currentSpend": 120000,
-      "baseRate": 0,
-      "baseBenefitText": "패키지 외 일반 매장 기본 할인 없음 (선택 패키지 집중 카드)",
-      "cautionNote": "⚠️ 주의: 할인이 적용된 결제 금액 전체는 전월 실적(30만 원) 산정에서 제외됩니다.",
       "isCompleted": false,
-      "minSpendLabel": "월 30만 원"
+      "baseRate": 0,
+      "baseBenefitText": "패키지 외 일반 매장 기본 할인 없음",
+      "cautionNote": "⚠️ 주의: 할인이 적용된 결제 금액 전체는 전월 실적(30만 원) 산정에서 제외됩니다."
     },
     {
       "id": "card_shinhan_love",
       "name": "신한카드 Love",
       "theme": "rose",
+      "minSpendLabel": "월 30만 원",
       "targetSpend": 300000,
-      "currentSpend": 180000,
+      "isCompleted": false,
       "baseRate": 0.5,
       "baseBenefitText": "일반 가맹점 기본 최대 0.5% 포인트 적립",
-      "cautionNote": "전월 실적 30만 원 이상 시 주유·마트·백화점·외식 통합 할인한도 제공",
-      "isCompleted": false,
-      "minSpendLabel": "월 30만 원"
+      "cautionNote": "전월 30만 원 이상 시 주유·마트·백화점·외식 통합 할인한도 제공"
     }
   ],
   "benefits": [
-    {
-      "id": "ben_custom_1794897540929",
-      "cardId": "card_hyundai_mm",
-      "placeName": "온라인 쇼핑",
-      "rate": 10,
-      "keywords": [
-        "온라인 쇼핑",
-        "네이버쇼핑",
-        "G마켓",
-        "옥션",
-        "11번가",
-        "컬리",
-        "SSG.COM"
-      ],
-      "benefitDetail": "M포인트 10% 적립",
-      "active": true,
-      "isPackageManaged": false
-    },
     {
       "id": "ben_taptap_coffee",
       "cardId": "card_samsung_taptap_o",
@@ -115,7 +95,7 @@
         "소셜커머스"
       ],
       "rate": 1,
-      "benefitDetail": "[패키지 자동적용] 1% 빅포인트 적립 (한도 제한 없음 · 할인 대신 1% 적립)",
+      "benefitDetail": "[패키지 자동적용] 1% 빅포인트 적립 (할인 대신 1% 적립)",
       "active": true,
       "isPackageManaged": true
     },
@@ -138,7 +118,7 @@
         "다이소"
       ],
       "rate": 1,
-      "benefitDetail": "[패키지 자동적용] 1% 빅포인트 적립 (한도 제한 없음 · 할인 대신 1% 적립)",
+      "benefitDetail": "[패키지 자동적용] 1% 빅포인트 적립 (할인 대신 1% 적립)",
       "active": true,
       "isPackageManaged": true
     },
@@ -175,6 +155,22 @@
       ],
       "rate": 25,
       "benefitDetail": "10,000원 이상 결제 시 5,000원 할인 (월 2회)",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
+      "id": "ben_taptap_overseas",
+      "cardId": "card_samsung_taptap_o",
+      "placeName": "해외 가맹점 / 해외 직구",
+      "keywords": [
+        "해외",
+        "해외직구",
+        "해외결제",
+        "알리익스프레스",
+        "아마존"
+      ],
+      "rate": 1.3,
+      "benefitDetail": "1.3% 빅포인트 적립 (전월 실적 관계없음)",
       "active": true,
       "isPackageManaged": false
     },
@@ -275,7 +271,7 @@
         "스벅"
       ],
       "rate": 20,
-      "benefitDetail": "20% 결제일 할인 (탭탭O 30% 한도 소진 시 2순위 대안)",
+      "benefitDetail": "20% 결제일 할인",
       "active": true,
       "isPackageManaged": false
     },
@@ -323,13 +319,14 @@
         "한의원",
         "학원",
         "미용실",
-        "다이소"
+        "다이소",
+        "해외",
+        "해외직구"
       ],
       "rate": 1.5,
       "benefitDetail": "1.5% M포인트 기본 적립 (한도 무제한) + 월 100만 원 필수 실적 채우기",
       "active": true,
       "isPackageManaged": false
     }
-  ],
-  "updatedAt": "2026-11-17T08:00:34.219Z"
+  ]
 }
