@@ -5,14 +5,16 @@
   },
   "cards": [
     {
-      "id": "card_shinhan_love",
-      "name": "신한카드 Love",
-      "theme": "rose",
-      "targetSpend": 300000,
-      "currentSpend": 180000,
-      "baseRate": 0.5,
-      "baseBenefitText": "일반 가맹점 기본 최대 0.5% 포인트 적립",
-      "cautionNote": "전월 실적 30만 원 이상 시 주유·마트·백화점·외식 통합 할인한도 제공"
+      "id": "card_hyundai_mm",
+      "name": "현대카드 MM",
+      "theme": "slate",
+      "targetSpend": 1000000,
+      "currentSpend": 650000,
+      "baseRate": 1.5,
+      "baseBenefitText": "국내외 전 가맹점 기본 1.5% M포인트 무제한 적립",
+      "cautionNote": "💡 월 최소 사용 금액(100만 원)이 높고 기본 적립률이 1.5%로 높아서, 다른 카드가 1% 적립이거나 무할인인 곳에서는 이 카드가 1순위입니다!",
+      "isCompleted": true,
+      "minSpendLabel": "월 100만 원"
     },
     {
       "id": "card_samsung_taptap_o",
@@ -22,17 +24,21 @@
       "currentSpend": 120000,
       "baseRate": 0,
       "baseBenefitText": "패키지 외 일반 매장 기본 할인 없음 (선택 패키지 집중 카드)",
-      "cautionNote": "⚠️ 주의: 할인이 적용된 결제 금액 전체는 전월 실적(30만 원) 산정에서 제외됩니다."
+      "cautionNote": "⚠️ 주의: 할인이 적용된 결제 금액 전체는 전월 실적(30만 원) 산정에서 제외됩니다.",
+      "isCompleted": false,
+      "minSpendLabel": "월 30만 원"
     },
     {
-      "id": "card_hyundai_mm",
-      "name": "현대카드 MM",
-      "theme": "slate",
-      "targetSpend": 1000000,
-      "currentSpend": 650000,
-      "baseRate": 1.5,
-      "baseBenefitText": "국내외 전 가맹점 기본 1.5% M포인트 무제한 적립",
-      "cautionNote": "💡 월 최소 사용 금액(100만 원)이 높고 기본 적립률이 1.5%로 높아서, 다른 카드가 1% 적립이거나 무할인인 곳에서는 이 카드가 1순위입니다!"
+      "id": "card_shinhan_love",
+      "name": "신한카드 Love",
+      "theme": "rose",
+      "targetSpend": 300000,
+      "currentSpend": 180000,
+      "baseRate": 0.5,
+      "baseBenefitText": "일반 가맹점 기본 최대 0.5% 포인트 적립",
+      "cautionNote": "전월 실적 30만 원 이상 시 주유·마트·백화점·외식 통합 할인한도 제공",
+      "isCompleted": false,
+      "minSpendLabel": "월 30만 원"
     }
   ],
   "benefits": [
@@ -325,5 +331,5 @@
       "isPackageManaged": false
     }
   ],
-  "updatedAt": "2026-11-17T06:39:00.930Z"
+  "updatedAt": "2026-11-17T07:11:00.628Z"
 }
