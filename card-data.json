@@ -37,6 +37,24 @@
   ],
   "benefits": [
     {
+      "id": "ben_custom_1794897540929",
+      "cardId": "card_hyundai_mm",
+      "placeName": "온라인 쇼핑",
+      "rate": 10,
+      "keywords": [
+        "온라인 쇼핑",
+        "네이버쇼핑",
+        "G마켓",
+        "옥션",
+        "11번가",
+        "컬리",
+        "SSG.COM"
+      ],
+      "benefitDetail": "M포인트 10% 적립",
+      "active": true,
+      "isPackageManaged": false
+    },
+    {
       "id": "ben_taptap_coffee",
       "cardId": "card_samsung_taptap_o",
       "placeName": "10대 커피전문점 (스타벅스·투썸·이디야·폴바셋·메가·컴포즈 등)",
@@ -307,5 +325,5 @@
       "isPackageManaged": false
     }
   ],
-  "updatedAt": "2026-11-17T06:31:10.783Z"
+  "updatedAt": "2026-11-17T06:39:00.930Z"
 }
