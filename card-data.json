@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T10:07:50.772Z",
+  "updatedAt": "2026-11-22T06:51:45.736Z",
   "taptapPackage": {
     "coffeeMode": "coffee_10_30",
     "shopping7Target": "openmarket"
@@ -11,7 +11,7 @@
       "theme": "slate",
       "minSpendLabel": "월 100만 원",
       "targetSpend": 1000000,
-      "isCompleted": false,
+      "isCompleted": true,
       "baseRate": 1.5,
       "baseBenefitText": "국내외 전 가맹점 기본 1.5% M포인트 무제한 적립",
       "cautionNote": "💡 월 최소 사용 기준(100만 원)이 가장 높고 기본 적립률도 1.5%로 높아서 일반 가맹점 1순위 카드입니다."
